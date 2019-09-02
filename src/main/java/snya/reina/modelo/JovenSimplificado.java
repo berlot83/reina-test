@@ -93,6 +93,7 @@ public class JovenSimplificado implements Serializable {
 	}
 	
 	/* Sólo en el caso de no usar Stored Procedures, se busca la entidad Joven y luego se pasa como parámetro resumiendo los atributos */
+	
 	public JovenSimplificado(Joven joven) {
 		
 		boolean condicionExpedientes = joven.getExpedientes().isEmpty() ? false : true;
