@@ -245,6 +245,7 @@ public class InformeServicioImpl {
 				grupos.add(grupoDeInforme);
 		}
 		
+		
 		return grupos;
 	}
 	
