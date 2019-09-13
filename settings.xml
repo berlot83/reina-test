@@ -126,18 +126,7 @@
 		| | -->
 	<profiles>
 
-		<profile>
-			<id>genoma</id>
-			<activation>
-				<property>
-					<name>!doNotUseGenomaRepo</name>
-				</property>
-			</activation>
-			<properties>
-				<genoma.read.url>https://mymavenrepo.com/repo/wxr9mZWjzaSsQPNtacRq/</genoma.read.url>
-				<genoma.write.url>https://mymavenrepo.com/repo/kJSVyyCKUV2P1ClilVVe/</genoma.write.url>
-			</properties>
-		</profile>
+
 
 		<!-- profile | Specifies a set of introductions to the build process, to 
 			be activated using one or more of the | mechanisms described above. For inheritance 
