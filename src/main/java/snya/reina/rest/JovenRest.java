@@ -20,6 +20,7 @@ import snya.reina.ReinaException;
 import snya.reina.modelo.Persona;
 import snya.reina.modelo.joven.Joven;
 import snya.reina.rest.dto.JovenSimpleDTO;
+import snya.reina.servicio.ExpedienteServicioImpl;
 import snya.reina.servicio.JovenServicioImpl;
 import snya.reina.servicio.PersonaServicioImpl;
 import snya.reina.utilidades.Utilidades;
@@ -36,6 +37,9 @@ public class JovenRest {
 
 	@Autowired
 	PersonaServicioImpl personaServicioImpl;
+	
+	@Autowired
+	ExpedienteServicioImpl expedienteServicioImpl;
 
 	/* Productivo */
 	/* Joven ahora imprime un Joven pero va a imprimir un JovenDTO */
@@ -91,17 +95,19 @@ public class JovenRest {
 		if (id != null){
 				if(jovenServicioImpl.traerPorId(id) != null) {
 					jovenEnDB = jovenServicioImpl.traerPorId(id);
+					
+					if (legajo != null) {
+						/* Asociación de legajos */
+						expedienteServicioImpl.agergarExpedienteExterno(id, idCaratulador, legajo);
+						/* debería ser 201 "Created" o 204 "No Content" para PUT, sin embargo puede dejarse 200 por defecto */
+						return ResponseEntity.ok().body("Operación realizada con éxito");
+						/* Asociación de legajos */
+					} else {
+						return ResponseEntity.badRequest().body("El legajo es nulo");
+					}					
 				}else {
 					throw new ReinaException(ReinaCte.VALOR_NULO + ", el objeto buscado es nulo y no se puede encontrar");
 				}
-			if (legajo != null) {
-				/* No sé qué hay que setear para la actualización, es un boceto tipo Dummy */
-				jovenEnDB.getLegajo().setObservacion("");
-				/* debería ser 201 "Created" o 204 "No Content" para PUT, sin embargo puede dejarse 200 por defecto */
-				return ResponseEntity.ok().body("Operación realizada con éxito");
-			} else {
-				return ResponseEntity.badRequest().body("El legajo es nulo");
-			}
 		}else {
 			throw new ReinaException(ReinaCte.VALOR_NULO + ", parámetro 'id' null");
 		}
