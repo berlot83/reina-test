@@ -213,16 +213,11 @@
 		<!-- SNYA profile end -->
 	</profiles>
 
-	<!-- Genomasoft Lakout start -->
 	<activeProfiles>
-		<!-- FENIX -->
-		<activeProfile>artifactory</activeProfile>
-		<activeProfile>genoma</activeProfile>
 		<!-- SNYA -->
 		<activeProfile>nexus-aplicaciones-snya</activeProfile>
 
 	</activeProfiles>
-	<!-- Genomasoft Lakout end -->
 	<!-- activeProfiles | List of profiles that are active for all builds. | 
 		<activeProfiles> <activeProfile>alwaysActiveProfile</activeProfile> <activeProfile>anotherAlwaysActiveProfile</activeProfile> 
 		</activeProfiles> -->
