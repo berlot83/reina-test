@@ -15,8 +15,25 @@ public class NavControllers {
 		return "index";
 	}
 	
+	@GetMapping("/login")
+	public String login() {
+		return "login";
+	}
+	
+	@GetMapping("/Rol")
+	public String rol() {
+		return "Rol";
+	}
+	
+	@GetMapping("/rolconsulta")
+	public String rolconsulta() {
+		return "rolconsulta";
+	}
+	
 	@GetMapping("/swagger-ui.html#!")
 	public String swagger() {
 		return"swagger-ui.html#!";
 	}
+	
+	
 }
