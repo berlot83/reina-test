@@ -97,12 +97,12 @@
 			Name for this Mirror.</name> <url>http://my.repository.com/repo/path</url> 
 			</mirror> -->
 
-<!-- 		<mirror> -->
-<!-- 		<id>internal-repository</id> -->
-<!-- 		<name>Maven Repository Manager running on SNYA</name> -->
-<!-- 		<url>https://aplicaciones.snya.gba.gob.ar/nexus/repository/maven-public/</url> -->
-<!-- 		<mirrorOf>*</mirrorOf> -->
-<!-- 		</mirror> -->
+		<mirror>
+		<id>internal-repository</id>
+		<name>Maven Repository Manager running on SNYA</name>
+		<url>https://aplicaciones.snya.gba.gob.ar/nexus/repository/maven-public/</url>
+		<mirrorOf>*</mirrorOf>
+		</mirror>
 	</mirrors>
 
 	<!-- profiles | This is a list of profiles which can be activated in a variety 
