@@ -7,8 +7,8 @@ spring:
 #              password: root
               
     datasource:
-              url: mysql://b609e0287d1a0f:973c1fb3@us-cdbr-iron-east-02.cleardb.net/heroku_e6e8555b3b8db50?reconnect=true
-#              url: jdbc:mysql://us-cdbr-iron-east-02.cleardb.net/heroku_e6e8555b3b8db50?reconnect=true
+#              url: mysql://b609e0287d1a0f:973c1fb3@us-cdbr-iron-east-02.cleardb.net/heroku_e6e8555b3b8db50?reconnect=true
+              url: jdbc:mysql://us-cdbr-iron-east-02.cleardb.net:3306/heroku_e6e8555b3b8db50?reconnect=true
               username: b609e0287d1a0f
               password: 973c1fb3
 
