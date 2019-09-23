@@ -14,10 +14,10 @@ spring:
 #              password: 973c1fb3
 
 #Google Cloud Platform SQL
-#    datasource:
-#              url: jdbc:mysql://104.154.186.85:3306/sistemassnya
-#              username: admin
-#              password: 
+    datasource:
+              url: jdbc:mysql://104.154.186.85:3306/sistemassnya
+              username: admin
+              password: 
           
 
 # jpa
