@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "reina-test",
+  "private_key_id": "92e4a104a9584081cc6ce7100dc7254ee2980e07",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQCv1LgtxOpMdYs+\n4nqpO6GKfpC1JnntDZOgjEfvWP5XONcffn4AituH4RAxp8tg/umgyZNXt+/tdgRd\nlKlidp3JuSzxwcSrBQu6u81KsK4Snik/QQPh00gTx6os1WyfuVQGsQgy4W8w10SN\n+iGSCzsNV1//53+kioHi1zI5sIT/bdePEA2GrnEn8gXo0cGrl2TWeD+e2f9S6gV2\ngHcOLr2SJwrK9TK+1ds7FWqCTGBpF059YeBWfPcL6g8Nxb52SuzW53fkUltS6oJw\nYtmjUZyIQwMtpVN+ro0EP72WnuJCzEsvH5GBntIXOXgxcfV/sNJx8teE/Qiw/Ot7\nps60lN4nAgMBAAECggEADKcWCdUdtxrORlwtz3fHDBxHdYGrTG+pq+fsVUDmLIie\nklmb35Yebgy4CZq1e+lcDoHy5GEMFt5jOgi0l61JdXap0UvMRzI5wdo5z6IfJJ/V\nAARBr0Jw8Vtw14EUK/o+Ha0nleG7CpyzBjR1rfi46yDae6PA/6on5pbtulEFgQvb\n4/RRbY9YvmbirSREbwi65MXDCjk+gptJHm8siAUrelHtCaO7G7At0z/Gpgm5kx1R\n2D5XbS7rNbPfVKjKLULH9M0DEbCGPMo9ANMI04ZIUIgjNDsi61uLmlYuLhYEx4N4\nvggDuT4AwRIkDuz270br+NivJTXIyaOeo58lyVex4QKBgQDc4ZUpB3/rgGRJUp/R\nolr0znOy4w6U8fd9Gk4sHbINDNlaq/Fp8eXEo+/amvbAiM2YI4eQxWpmOadV5iiH\n7VwhmzTlyXOwicRWfUSmPmGKmueO5c+7K/uW6HlOgUJ9O56QZul+gwWeMFB4dtsk\n9UP5GAunrhfrw/faTHZriTurOwKBgQDLyXqZs3gBU1N8h+vvbC+Fqb8TyotSSPcb\ne6o01eeL2lftl+qObFovKFJn2klE2g0UgH4MEGcCWSZwmniUqMyjTarC0DKznent\nru+lCHzH8vpo+DyP78UKMyDzTZZuSBZ7g8XwL1wUd8xGrGuBDo76zWHeGDObVCLM\nnIbyc1syBQKBgQCZ3nOgL19HWRuDkJFQ4f7mxuMGXPINhDnZ5ndKeC1OtgK8DUeR\nfDeJsoImEQmPuj0unKGVklC6gbM2Pa1Cc3FY39wLrzhuZKpnbcBi5tXgTmS8wQ7i\n3pLW33+R1q3Qu7WL9oT14qQJPLLyGCo1Jr6BSeTknHyBevSwF8/uvZzZfQKBgQCH\nQClGaX50IsF+HRfRx5Oiuo4+rGbbLeITM3g7qNwMTdWdsv3RmMgiFDjdBFssfyu/\nN6hwiVJUlKaWhW8R+xYWLC3xLgz4eQ4Q2dHjTkbCzdi0YkyPmyrDIjv0PsJgXyfM\nwiBU0JnkW74QCc8v0GHEwxr5NEbMCIMwGZLWxwj3oQKBgQDW2v10EUxyeYQJZHEA\nuRcfx0O9ZxUzFzpUvIosKcCciaJiD2c45p3U+qbIMrjVMiJ5zcPFphtUd2Tem+zW\nNhhnHvZJN4etvYZCbGhPeGnBb62WcfYNmsYxnb/N6AGTS2be1bQOrV5V1dOS4+Te\naKcKKEhv9jV26aqwnYrtMTzW4w==\n-----END PRIVATE KEY-----\n",
+  "client_email": "molokotech@reina-test.iam.gserviceaccount.com",
+  "client_id": "116745917076601846662",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/molokotech%40reina-test.iam.gserviceaccount.com"
+}
