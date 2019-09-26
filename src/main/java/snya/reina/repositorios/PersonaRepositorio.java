@@ -17,5 +17,5 @@ public interface PersonaRepositorio extends JpaRepository<Persona, Long> {
 	/* En uso - Búsqueda mixta de datos en DB */
 	List<Persona> findByNombresLikeOrApellidosLikeOrNumeroDocumentoLike(String nombres, String apellidos, String numeroDocumento);
 	
-	List<Persona> findByNumeroDocumentoLikeOrApellidosLikeAndNombresLike(String numeroDocumento, String apellidos, String nombres);
+	List<Persona> findByNumeroDocumentoLikeOrApellidosLikeOrNombresLike(String numeroDocumento, String apellidos, String nombres);
 }

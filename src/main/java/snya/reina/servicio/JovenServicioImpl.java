@@ -501,7 +501,7 @@ public class JovenServicioImpl {
 		/* Creamos una lista donde vamos a meter los resultados */
 		List<JovenSimpleDTO> listaJovenes = new ArrayList<>();
 		/* Buscamos primero las personas que matcheen con el nombre */
-		List<Persona> personas = jovenRepositorio.findByNumeroDocumentoLikeOrApellidosLikeAndNombresLike("%"+numeroDocumento+"%", "%"+apellidos+"%", "%"+nombres+"%");
+		List<Persona> personas = jovenRepositorio.findByNumeroDocumentoLikeOrApellidosLikeOrNombresLike("%"+numeroDocumento+"%", "%"+apellidos+"%", "%"+nombres+"%");
 		/* Recorremos el resultado */
 		Iterator<Persona> it = personas.iterator();
 		

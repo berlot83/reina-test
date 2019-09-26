@@ -1,11 +1,74 @@
 <Html>
 <head>
+<style>
+.colorBlue {
+	color: blue;
+}
+.colorRed {
+	color: red;
+}
+.colorGreen {
+	color: green;
+}
+.colorYellow {
+	color: Gold;
+}
+</style>
 </head>
 
 <body>
 	<h1>API SYNA</h1>
-	<a href="/swagger-ui.html#" style="font-weight:bold;font-style:italic;color:blue">Ir a Swagger</a>
-	<h3>SYNA</h3>
-	
+	<a href="/swagger-ui.html#"
+		style="font-weight: bold; font-style: italic; color: blue">Ir a
+		Swagger</a>
+
+	<h3>Documentación Reina API SNyA:</h3>
+
+	<p>
+		<strong>Todos los path menos este index están protegidos por
+			Contraseña por medio de Spring security por capas, al sólo hecho de
+			proteger los datos sensibles, luego muy posiblemente se quite la
+			misma.</strong>
+	</p>
+
+	<h4>Datos:</h4>
+	<ul>
+
+		<li><b class="colorRed">Host</b> ==> http://186.19.113.224:8080/</li>
+		<li><b class="colorRed">Path principal</b> ==> http://186.19.113.224:8080/api/</li>
+		<li >Tener en cuenta que algunas respuestas pueden tardar ya que
+			la <i>DB es gigante</i>.
+		</li>
+		<li>Al momento quité la seguridad por token ya que le estoy
+			haciendo unas mejoras, sin embargo está hecho.</li>
+
+	</ul>
+	<h4>Endpoints disponibles:</h4>
+	<ul>
+		<li>
+		<b class="colorYellow">GET</b> ==> http://186.19.113.224:8080/api/jovenes/simple/<i
+			class="colorBlue">{id}</i>
+			<br>(Devuelve datos simplificados de un Joven)</br>
+			<br></br>
+		</li>
+		<li>
+		<b class="colorYellow">GET</b> ==>
+			http://186.19.113.224:8080/api/jovenes/simple/busqueda1?buscar= <i class="colorBlue">{numeroDocumento}</i>
+			|| <i class="colorBlue">{apellido}</i> || <i class="colorBlue">{nombre}</i>
+			<br>(Devuelve Lista de datos simplificados de Jovenes que matcheen)</br>
+			<br></br>
+		</li>
+		<li>
+		<b class="colorYellow">GET</b> ==>
+			http://186.19.113.224:8080/api/jovenes/simple/busqueda2?numeroDocuemnto=<i class="colorBlue">{numeroDocumento}</i>&amp;apellidos=<i class="colorBlue">{apellidos}</i>&amp;nombres=<i class="colorBlue">{nombres}</i>
+			<br>(Devuelve Lista de datos simplificados de Jovenes que matcheen)</br>
+			<br></br>
+		</li>
+		<li>
+		<b class="colorGreen">PUT</b> ==> http://186.19.113.224:8080/api/jovenes/<i class="colorBlue">{id}</i>?legajo=<i class="colorBlue">{legajo}</i>&amp;idCaratulador=<i class="colorBlue">{idCaratulador}</i>
+			<br>(Modifica un registro en la DB que hace de unión con Reuna/ todavía no está terminado)</br>
+			<br></br>
+		</li>
+	</ul>
 </body>
 </Html>
