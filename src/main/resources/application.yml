@@ -15,7 +15,6 @@ spring:
 # jpa
     jpa:
         database: default
-#        database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
         generate-ddl: false
         show-sql: true
 

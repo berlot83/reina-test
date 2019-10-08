@@ -4,7 +4,13 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.NoSuchElementException;
+
+import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
+
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import snya.archivoscliente.ArchivoCliente;
@@ -41,6 +47,7 @@ import snya.reina.modelo.joven.TipoDeSituacionTramite;
 import snya.reina.modelo.movimiento.Movimiento;
 import snya.reina.modelo.movimiento.Permanencia;
 import snya.reina.modelo.referente.Familiar;
+import snya.reina.repositorios.JovenRepositorio;
 import snya.reina.repositorios.PersonaRepositorio;
 import snya.reina.rest.dto.JovenSimpleDTO;
 import snya.reina.serviciomodelo.GenericBuilder;
@@ -52,7 +59,10 @@ public class JovenServicioImpl {
 
 	/* Provisorio no lo usan al momento Pero funcionan - Axel */
 	@Autowired
-	PersonaRepositorio jovenRepositorio;
+	PersonaRepositorio personaRepositorio;
+	
+	@Autowired
+	JovenRepositorio jovenRepositorio;
 	/* */
 	
 	@Autowired
@@ -420,7 +430,7 @@ public class JovenServicioImpl {
 		/* Creamos una lista donde vamos a meter los resultados */
 		List<JovenSimplificado> listaJovenes = new ArrayList<>();
 		/* Buscamos primero las personas que matcheen con el nombre */
-		List<Persona> personasNombres = jovenRepositorio.findByNombresContaining(buscar);
+		List<Persona> personasNombres = personaRepositorio.findByNombresContaining(buscar);
 		/* Recorremos el resultado */
 		Iterator<Persona> it = personasNombres.iterator();
 		while (it.hasNext()) {
@@ -441,7 +451,7 @@ public class JovenServicioImpl {
 		/* Creamos una lista donde vamos a meter los resultados */
 		List<JovenSimplificado> listaJovenes = new ArrayList<>();
 		/* Buscamos primero las personas que matcheen con el nombre */
-		List<Persona> personasApellidos = jovenRepositorio.findByApellidosContaining(buscar);
+		List<Persona> personasApellidos = personaRepositorio.findByApellidosContaining(buscar);
 		/* Recorremos el resultado */
 		Iterator<Persona> it = personasApellidos.iterator();
 		while (it.hasNext()) {
@@ -462,7 +472,7 @@ public class JovenServicioImpl {
 		/* Creamos una lista donde vamos a meter los resultados */
 		List<JovenSimplificado> listaJovenes = new ArrayList<>();
 		/* Buscamos primero las personas que matcheen con el nombre */
-		List<Persona> personasNumeroDocumento = jovenRepositorio.findByNumeroDocumentoContaining(buscar);
+		List<Persona> personasNumeroDocumento = personaRepositorio.findByNumeroDocumentoContaining(buscar);
 		/* Recorremos el resultado */
 		Iterator<Persona> it = personasNumeroDocumento.iterator();
 		while (it.hasNext()) {
@@ -478,21 +488,27 @@ public class JovenServicioImpl {
 	}
 	
 	/* Busqueda por atributos/propiedades múltiples = 'NumeroDocumento, Nombres, Apellidos' */
-	public List<JovenSimpleDTO> traerPorCriterioDeBusquedaMixto1(String busquedaMixta) {
+	public List<JovenSimpleDTO> traerPorCriterioDeBusquedaMixto1(String busquedaMixta){
 		/* Creamos una lista donde vamos a meter los resultados */
 		List<JovenSimpleDTO> listaJovenes = new ArrayList<>();
 		/* Buscamos primero las personas que matcheen con el nombre */
-		List<Persona> personas = jovenRepositorio.findByNombresLikeOrApellidosLikeOrNumeroDocumentoLike("%"+busquedaMixta+"%", "%"+busquedaMixta+"%", "%"+busquedaMixta+"%");
+		List<Persona> personas = personaRepositorio.findByNombresIgnoreCaseLikeOrApellidosIgnoreCaseLikeOrNumeroDocumentoIgnoreCaseLike("%"+busquedaMixta+"%", "%"+busquedaMixta+"%", "%"+busquedaMixta+"%");
 		/* Recorremos el resultado */
 		Iterator<Persona> it = personas.iterator();
 		while (it.hasNext()) {
 			/* Capturamos el id de la persona */
-			int	idPersona = it.next().getId();
-			/* buscamos el joven asociado */
-			Joven joven = this.traerPorId(idPersona);
-			JovenSimpleDTO jovenSimplificado = new JovenSimpleDTO(joven);
-			/* Lo agregamos a la lista de resultados */
-			listaJovenes.add(jovenSimplificado);
+			if(it.next().getId() != null) {
+				int	idPersona = it.next().getId();
+				try{
+					/* buscamos el joven asociado */
+					Joven joven = jovenRepositorio.getOne(idPersona);
+					JovenSimpleDTO jovenSimplificado = new JovenSimpleDTO(joven);
+					/* Lo agregamos a la lista de resultados */
+					listaJovenes.add(jovenSimplificado);
+				}catch(EntityNotFoundException ex) {
+					System.out.println("Hay existencias que matchean con esta búsqueda de  registros de Personas pero no están asociado a ningún dato de la tabla joven.");
+				}
+			}
 		}
 		return listaJovenes;
 	}
@@ -501,7 +517,7 @@ public class JovenServicioImpl {
 		/* Creamos una lista donde vamos a meter los resultados */
 		List<JovenSimpleDTO> listaJovenes = new ArrayList<>();
 		/* Buscamos primero las personas que matcheen con el nombre */
-		List<Persona> personas = jovenRepositorio.findByNumeroDocumentoLikeOrApellidosLikeOrNombresLike("%"+numeroDocumento+"%", "%"+apellidos+"%", "%"+nombres+"%");
+		List<Persona> personas = personaRepositorio.findByNumeroDocumentoLikeAndApellidosLikeAndNombresLike("%"+numeroDocumento+"%", "%"+apellidos+"%", "%"+nombres+"%");
 		/* Recorremos el resultado */
 		Iterator<Persona> it = personas.iterator();
 		
@@ -515,5 +531,9 @@ public class JovenServicioImpl {
 			listaJovenes.add(jovenSimplificado);
 		}
 		return listaJovenes;
+	}
+	
+	public Joven findById(Integer idJoven) {
+		return jovenRepositorio.findOne(idJoven) ;
 	}
 }

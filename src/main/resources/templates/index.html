@@ -13,6 +13,9 @@
 .colorYellow {
 	color: Gold;
 }
+.colorPink {
+	color: deeppink;
+}
 </style>
 </head>
 
@@ -44,31 +47,38 @@
 
 	</ul>
 	<h4>Endpoints disponibles:</h4>
+	<h5>Path ==> /api/jovenes</h5>
 	<ul>
 		<li>
 		<b class="colorYellow">GET</b> ==> http://186.19.113.224:8080/api/jovenes/simple/<i
 			class="colorBlue">{id}</i>
-			<br>(Devuelve datos simplificados de un Joven)</br>
+			<br><small class="colorPink"><strong>(Devuelve datos simplificados de un Joven)</strong></small></br>
 			<br></br>
 		</li>
 		<li>
 		<b class="colorYellow">GET</b> ==>
 			http://186.19.113.224:8080/api/jovenes/simple/busqueda1?buscar= <i class="colorBlue">{numeroDocumento}</i>
 			|| <i class="colorBlue">{apellido}</i> || <i class="colorBlue">{nombre}</i>
-			<br>(Devuelve Lista de datos simplificados de Jovenes que matcheen)</br>
+			<br><small class="colorPink"><strong>(Devuelve Lista de datos simplificados de Jovenes que matcheen)</strong></small></br>
 			<br></br>
 		</li>
 		<li>
 		<b class="colorYellow">GET</b> ==>
 			http://186.19.113.224:8080/api/jovenes/simple/busqueda2?numeroDocuemnto=<i class="colorBlue">{numeroDocumento}</i>&amp;apellidos=<i class="colorBlue">{apellidos}</i>&amp;nombres=<i class="colorBlue">{nombres}</i>
-			<br>(Devuelve Lista de datos simplificados de Jovenes que matcheen)</br>
+			<br><small class="colorPink"><strong>(Devuelve Lista de datos simplificados de Jovenes que matcheen)</strong></small></br>
 			<br></br>
 		</li>
 		<li>
 		<b class="colorGreen">PUT</b> ==> http://186.19.113.224:8080/api/jovenes/<i class="colorBlue">{id}</i>?legajo=<i class="colorBlue">{legajo}</i>&amp;idCaratulador=<i class="colorBlue">{idCaratulador}</i>
-			<br>(Modifica un registro en la DB que hace de unión con Reuna/ todavía no está terminado)</br>
+			<br><small class="colorPink"><strong>(Modifica un registro en la DB que hace de unión con Reuna/ todavía no está terminado)</strong></small></br>
 			<br></br>
 		</li>
 	</ul>
+	
+		<h5>Path ==> /api/informes</h5>
+	<ul>
+	<li><b class="colorYellow">GET</b> ==> http://186.19.113.224:8080/api/informes/{id}</li>
+	</ul>
+	
 </body>
 </Html>

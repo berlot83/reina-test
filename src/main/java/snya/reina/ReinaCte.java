@@ -7,9 +7,9 @@ public class ReinaCte {
 	public static final String PASSWORD_NO_VALIDA = "Usuario o contraseña invalidos.";
 	public static final String SISTEMA_NO_ACTIVO_PARA_USUARIO = "El usuario no esta autorizado para el sistema.";
 	public static final String NO_POSIBLE_SITUACION_TRAMITE_SIGUIENTE = "No se puede indicar la situacion de tramite %2$s luego de haber registrado el estado %1$s.";
-	public static final String FECHA_SITUACION_TRAMITE_ES_MENOR = "La nueva situacion del tramite debe ser mayor a %s.";
 	public static final String EXISTE_FAMILIAR_JOVEN = "Para el joven ya existe un familiar para el joven %1$s con parentesco %2$s, que no es %3$s .";
 	public static final String FECHA_INICIO_PROCESO_PENAL_ERRONEA = "Debe consignar una fecha de proceso valida.";
+	public static final String FECHA_SITUACION_TRAMITE_ES_MENOR = "La nueva situacion del tramite debe ser mayor a %s.";
 	public static final String FECHA_INTERVENCION_ERRONEA = "Debe consignar una fecha de intervencion valida";
 	public static final String FECHA_BAJA_INTERVENCION_ERRONEA = "Debe consignar una fecha de baja de la intervencion valida.";
 	public static final String APELLIDO_PERSONA_NULO = "Debe consignar el apellido";
@@ -89,6 +89,7 @@ public class ReinaCte {
 	
 	public static final String POCOS_CARACTERES_DE_BUSQUEDA = "La cantidad de caractéres es insuficiente para realizar la búsqueda.";
 	public static final String VALOR_NULO = "La operación no fue exitosa ya que el dato fue Nulo";
+	public static final String NO_AUTORIZADO = "No autorizado porque no posee los permisos/ roles adecuados para ver esta información";
 
 	
 	

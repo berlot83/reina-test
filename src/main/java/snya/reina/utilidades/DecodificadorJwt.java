@@ -4,6 +4,11 @@ import org.springframework.security.jwt.JwtHelper;
 
 public class DecodificadorJwt {
 
+	
+	public void crearToken() {
+		
+	}
+	
 	public static String decodificarClaim(String jwt) {
 		String token = JwtHelper.decode(jwt).getClaims();
 		return token;
