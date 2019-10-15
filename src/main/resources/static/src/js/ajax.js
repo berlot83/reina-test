@@ -184,32 +184,32 @@ $(document).ready(function() {
 //}
 
 /* Busqueda mixta2 */
-function busquedaMixta2() {
-	var busquedaMixta2Div = document.getElementById("busquedaMixta2Div");
-	busquedaMixta2Div.innerHTML = "";
-	var documento = document.getElementById("paramDocumento").value;
-	var nombre = document.getElementById("paramNombre").value;
-	var apellido = document.getElementById("paramApellido").value;
-	$
-			.ajax({
-				type : "GET",
-				beforeSend : function(request) {
-					request
-							.setRequestHeader(
-									"token",
-									"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJVc3VhcmlvIjoiYXhlbCIsIk5vbWJyZSI6IkF4ZWwiLCJBcGVsbGlkbyI6IkJlcmxvdCIsIkVtYWlsIjoiYmVybG90ODNAeWFob28uY29tLmFyIiwiUm9sIjoiUk9MX0ZVTkNJT05BUklPIiwiU2VjdG9yIjoiTEEgUExBVEEifQ.XaWl34KzNxYkJO5PeMBhA-zv5P3a4yA2FDvYyfweSO7enbOR_J8gm16tn3wW_RJLrddRitmfn-ECW0riEd3EpA");
-				},
-				url : "api/jovenes/simple/busqueda2?numeroDocumento=" + documento + "&apellidos="+ apellido + "&nombres=" + nombre,
-				dataType : "json",
-				processData : false,
-				success : function(data) {
-					alert(data);
-					
-					$("#busquedaMixta2Div").append(
-							JSON.stringify(data, null, 2));
-				}
-			});
-}
+//function busquedaMixta2() {
+//	var busquedaMixta2Div = document.getElementById("busquedaMixta2Div");
+//	busquedaMixta2Div.innerHTML = "";
+//	var documento = document.getElementById("paramDocumento").value;
+//	var nombre = document.getElementById("paramNombre").value;
+//	var apellido = document.getElementById("paramApellido").value;
+//	$
+//			.ajax({
+//				type : "GET",
+//				beforeSend : function(request) {
+//					request
+//							.setRequestHeader(
+//									"token",
+//									"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJVc3VhcmlvIjoiYXhlbCIsIk5vbWJyZSI6IkF4ZWwiLCJBcGVsbGlkbyI6IkJlcmxvdCIsIkVtYWlsIjoiYmVybG90ODNAeWFob28uY29tLmFyIiwiUm9sIjoiUk9MX0ZVTkNJT05BUklPIiwiU2VjdG9yIjoiTEEgUExBVEEifQ.XaWl34KzNxYkJO5PeMBhA-zv5P3a4yA2FDvYyfweSO7enbOR_J8gm16tn3wW_RJLrddRitmfn-ECW0riEd3EpA");
+//				},
+//				url : "api/jovenes/simple/busqueda2?numeroDocumento=" + documento + "&apellidos="+ apellido + "&nombres=" + nombre,
+//				dataType : "json",
+//				processData : false,
+//				success : function(data) {
+//					alert(data);
+//					
+//					$("#busquedaMixta2Div").append(
+//							JSON.stringify(data, null, 2));
+//				}
+//			});
+//}
 
 
 

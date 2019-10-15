@@ -24,8 +24,10 @@
 
 <body>
 	<div class="container">
+	<button class="btn btn-small btn-success" onclick="window.location.href='/index'">Inicio</button>
 		<div class="reinaDiv">
-			<h2>Resultados Reina:</h2>
+			<h2>Reina:</h2>
+			<strong style="color:red">Estas llamadas de Reina ==> Reina son Ajax</strong>
 			<hr></hr>
 			<div class="pad30">
 				<strong>Búsqueda por id:</strong>
@@ -33,14 +35,12 @@
 				<button class="btn btn-success" id="botonBusquedaIndivual">Buscar</button>
 <!-- 				<button class="btn btn-success" onclick="buscarIndividual()">Buscar</button> -->
 <hr></hr>
-<br></br>
 
 				<strong>Búsqueda mixta en un parámetro:</strong>
 				<input type="text" id="busquedaMixta1" />
 <!-- 				<button class="btn btn-success" onclick="busquedaMixta1()" id="botonBusquedaMixta1">Buscar</button> -->
 				<button class="btn btn-success" id="botonBusquedaMixta1">Buscar</button>
 <hr></hr>
-<br></br>
 				<strong>Búsqueda mixta en tres parámetros:</strong>
 				<input type="text" id="paramDocumento" placeholder="Documento" />
 				<input type="text" id="paramApellido" placeholder="Apellido" />
@@ -48,14 +48,12 @@
 <!-- 				<button class="btn btn-success" onclick="busquedaMixta2()">Buscar</button> -->
 				<button class="btn btn-success" id="botonBusquedaMixta2">Buscar</button>
 <hr></hr>
-<br></br>
-<br></br>
 
-<h4><strong>Resultados</strong></h4>
+<h4><strong>Resultados - <span style="color:darkgreen">Abrir la consola con F12 para ver Todos los resultados del JSON</span></strong></h4>
 				<table id="tablaReina" class="display">
 					<thead>
 						<tr>
-							<th>Ap y Nom</th>
+							<th>Apellidos y Nombres</th>
 							<th>Nombres</th>
 							<th>Tiene Doc.</th>
 							<th>Doc.nombre</th>
@@ -80,12 +78,15 @@
 						</tr>
 					</tfoot>
 				</table>
-
-
 			</div>
 		</div>
+		
+		<hr></hr>
+		<br></br>
+		
 		<div id="reunaDiv">
-			<h2>Resultados Reuna:</h2>
+			<h2>Reuna:</h2>
+			<strong style="color:red">Estas llamadas de Reina ==> Reuna son de Servidor a servidor</strong>
 			<hr></hr>
 			<div id="reuna"></div>
 		</div>

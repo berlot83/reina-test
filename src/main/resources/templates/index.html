@@ -50,12 +50,13 @@
 
 		<li><b class="colorRed">Host</b> ==> http://186.19.113.224:8080/</li>
 		<li><b class="colorRed">Path principal</b> ==> http://186.19.113.224:8080/api/</li>
-		<li >Tener en cuenta que algunas respuestas pueden tardar ya que
-			la <i>DB es gigante</i>.
+		<li >Tener en cuenta que algunas respuestas pueden tardar ya que la <i>DB es gigante</i>.
 		</li>
-		<li>Al momento quité la seguridad por token ya que le estoy
-			haciendo unas mejoras, sin embargo está hecho.</li>
-
+		<li>A cada llamada que se realice a cualquiera de estos endpoints debe estar acompañada de un <strong>Token</strong> acoplado a cada request dentro del <strong>Header</strong> y <strong>No en el body</strong>, el mismo debe contener los siguientes atributos, <i>Nombre</i>, <i>Apellidos</i>, <i>Email</i>, <i>Usuario</i>, <i>Rol</i>, <i>Sector</i>.
+		<br></br>
+		El atributo <strong>Rol</strong> sólo puede llevar los siguientes roles "temporarios" hasta que se definan por completo, <i>ROL_FUNCIONARIO</i>, <i>ROL_CONSULTA</i>, <i>ROL_VISTA_LEGAJO</i>, <i>ROL_VISTA_LEGAJO_UBICACION</i>, <i>ROL_VISTA_LEGAJO_TECNICO</i>.
+		<br></br>
+		Si el rol es diferente devolverá <strong>Http Error 401, código de no autorizado</strong></li>
 	</ul>
 	<h4>Endpoints disponibles:</h4>
 	<h5>Path ==> /api/jovenes</h5>
