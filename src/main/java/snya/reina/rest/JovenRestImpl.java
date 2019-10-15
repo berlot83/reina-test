@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -43,11 +44,13 @@ public class JovenRestImpl implements JovenRest{
 	@Autowired
 	ExpedienteServicioImpl expedienteServicioImpl;
 
+	@CrossOrigin
 	@GetMapping("/{id}")
 	public Joven obtenerJoven(@PathVariable Integer id) {
 		return jovenServicioImpl.findById(id);
 	}
 
+	@CrossOrigin
 	@GetMapping("/simple/{id}")
 	public ResponseEntity<JovenSimpleDTO> obtenerJovenSimplificado(@PathVariable Integer id, HttpServletRequest request) {
 		UsuarioToken usuarioToken = JwtUtil.obtenerUsuarioToken(request);
@@ -60,6 +63,7 @@ public class JovenRestImpl implements JovenRest{
 		}
 	}
 	
+	@CrossOrigin
 	@GetMapping("/simple/busqueda1")
 	public ResponseEntity<List<JovenSimpleDTO>> obtenerJovenSimplificadoBusquedaMixto1(@RequestParam String buscar, HttpServletRequest request) {
 		UsuarioToken usuarioToken = JwtUtil.obtenerUsuarioToken(request);
@@ -70,6 +74,7 @@ public class JovenRestImpl implements JovenRest{
 		}
 	}
 	
+	@CrossOrigin
 	@GetMapping("/simple/busqueda2")
 	public ResponseEntity<List<JovenSimpleDTO>> obtenerJovenSimplificadoBusquedaMixto2(@RequestParam String numeroDocumento, @RequestParam String apellidos, @RequestParam String nombres, HttpServletRequest request){
 		UsuarioToken usuarioToken = JwtUtil.obtenerUsuarioToken(request);
@@ -80,6 +85,7 @@ public class JovenRestImpl implements JovenRest{
 		}
 	}
 
+	@CrossOrigin
 	@RequestMapping(value = "/expediente/{id}", method = RequestMethod.PUT, consumes = {MediaType.APPLICATION_JSON_UTF8_VALUE}, produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
 	public @ResponseBody ResponseEntity<String> actualizarJoven(@PathVariable Integer id, @RequestBody AsociadorDTO asociador, HttpServletRequest request) {
 //		Joven jovenEnDB = null;

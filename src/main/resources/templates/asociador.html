@@ -1,0 +1,96 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"></link>
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<link
+	href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css"
+	rel="stylesheet"></link>
+<script type="text/javascript"
+	src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="src/js/ajax.js"></script>
+<!-- TODO ver que pasa con la ruta de los CSS, JS, img -->
+<title>Asociador de Reina y Reuna</title>
+<style type="text/css">
+.pad30 {
+	padding-left: 30px;
+}
+</style>
+</head>
+
+<body>
+	<div class="container">
+		<div class="reinaDiv">
+			<h2>Resultados Reina:</h2>
+			<hr></hr>
+			<div class="pad30">
+				<strong>Búsqueda por id:</strong>
+				<input type="text" id="idBuscarIndividual" />
+				<button class="btn btn-success" id="botonBusquedaIndivual">Buscar</button>
+<!-- 				<button class="btn btn-success" onclick="buscarIndividual()">Buscar</button> -->
+<hr></hr>
+<br></br>
+
+				<strong>Búsqueda mixta en un parámetro:</strong>
+				<input type="text" id="busquedaMixta1" />
+<!-- 				<button class="btn btn-success" onclick="busquedaMixta1()" id="botonBusquedaMixta1">Buscar</button> -->
+				<button class="btn btn-success" id="botonBusquedaMixta1">Buscar</button>
+<hr></hr>
+<br></br>
+				<strong>Búsqueda mixta en tres parámetros:</strong>
+				<input type="text" id="paramDocumento" placeholder="Documento" />
+				<input type="text" id="paramApellido" placeholder="Apellido" />
+				<input type="text" id="paramNombre" placeholder="Nombre" />
+<!-- 				<button class="btn btn-success" onclick="busquedaMixta2()">Buscar</button> -->
+				<button class="btn btn-success" id="botonBusquedaMixta2">Buscar</button>
+<hr></hr>
+<br></br>
+<br></br>
+
+<h4><strong>Resultados</strong></h4>
+				<table id="tablaReina" class="display">
+					<thead>
+						<tr>
+							<th>Ap y Nom</th>
+							<th>Nombres</th>
+							<th>Tiene Doc.</th>
+							<th>Doc.nombre</th>
+							<th>Documento</th>
+							<th>Sit. Doc</th>
+							<th>sexo</th>
+							<th>historicidad</th>
+							<th>Acciones</th>
+						</tr>
+					</thead>
+					<tfoot>
+						<tr>
+							<th>Ap y Nom</th>
+							<th>Nombres</th>
+							<th>Tiene Doc.</th>
+							<th>Doc.nombre</th>
+							<th>Documento</th>
+							<th>Sit. Doc</th>
+							<th>sexo</th>
+							<th>historicidad</th>
+							<th>Acciones</th>
+						</tr>
+					</tfoot>
+				</table>
+
+
+			</div>
+		</div>
+		<div id="reunaDiv">
+			<h2>Resultados Reuna:</h2>
+			<hr></hr>
+			<div id="reuna"></div>
+		</div>
+	</div>
+</body>
+
+
+</html>

@@ -52,7 +52,7 @@ public class JovenSimpleDTO {
 		this.tieneDocumento = joven.isTieneDocumento();
 		this.tipoDeDocumento = joven.getTipoDeDocumento();
 		this.numeroDocumento = joven.getNumeroDocumento();
-		this.situacionDocumentacion = joven.getSituacionesTramiteDocumento().isEmpty() ? "Sin situación al momento": joven.getSituacionesTramiteDocumento().get(0).traerDetalleExtenso();
+//		this.situacionDocumentacion = joven.getSituacionesTramiteDocumento().isEmpty() ? "Sin situación al momento": joven.getSituacionesTramiteDocumento().get(0).traerDetalle();
 		this.sexo = joven.getSexo();
 		this.fechaNacimiento = joven.getFechaNacimiento();
 		this.edad = joven.getEdad();
@@ -60,8 +60,8 @@ public class JovenSimpleDTO {
 		this.cuil = joven.getCuil();
 		this.lugarDeNacimiento = joven.getDetalleLugarDeNacimiento();
 		this.domicilio = joven.getDomicilio() == null ? null : joven.getDomicilio().getDetalle();
-		this.referentes = joven.getDetalleReferentes();
-		this.historicidad = joven.getDetalleHistoricidad();
+//		this.referentes = joven.getDetalleReferentes() == null ? null : joven.getDetalleReferentes();
+		this.historicidad = joven.getDetalleHistoricidad()  == null ? null : joven.getDetalleHistoricidad();
 	}
 
 	public Integer getId() {
@@ -224,14 +224,14 @@ public class JovenSimpleDTO {
 		this.domicilio = domicilio;
 	}
 
-	public String getReferentes() {
-		return referentes;
-	}
-
-	public void setReferentes(String referentes) {
-		this.referentes = referentes;
-	}
-
+//	public String getReferentes() {
+//		return referentes;
+//	}
+//
+//	public void setReferentes(String referentes) {
+//		this.referentes = referentes;
+//	}
+//
 	public String getHistoricidad() {
 		return historicidad;
 	}

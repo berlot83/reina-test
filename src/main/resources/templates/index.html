@@ -1,5 +1,9 @@
-<Html>
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"></link>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <style>
 .colorBlue {
 	color: blue;
@@ -17,13 +21,20 @@
 	color: deeppink;
 }
 </style>
+<title>SNyA Inicio</title>
 </head>
 
 <body>
 	<h1>API SYNA</h1>
+
+	<div>
 	<a href="/swagger-ui.html#"
-		style="font-weight: bold; font-style: italic; color: blue">Ir a
-		Swagger</a>
+		style="font-weight: bold; font-style: italic; color: blue"><button class="btn btn-primary">Ir a
+		Swagger</button></a>
+		
+		<a href="/asociador.html"
+		style="font-weight: bold; font-style: italic; color: blue"><button class="btn btn-primary">Reina - Reuna</button></a>	
+	</div>
 
 	<h3>Documentación Reina API SNyA:</h3>
 
@@ -81,4 +92,4 @@
 	</ul>
 	
 </body>
-</Html>
+</html>

@@ -66,7 +66,7 @@ public class JwtUtil {
     	user.setApellido("Pereyra");
     	user.setNombre("Marcelo");
     	user.setEmail("marcelo@snya.com.ar");
-    	user.setRol("ROL_FUNCIONARIO");
+    	user.setRol("ADMINISTRADOR");
     	user.setSector("SNYA La Plata");
     	System.out.println(generateToken(user));
     	

@@ -20,7 +20,13 @@ public class DatosUsuarioInterceptor implements ClientHttpRequestInterceptor {
 
         ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
         HttpSession session = attr.getRequest().getSession();
-            UsuarioToken usuarioToken = new UsuarioToken(session);
+            
+        UsuarioToken usuarioToken = new UsuarioToken(session);
+            usuarioToken.setNombre("Marcelo");
+            usuarioToken.setApellido("Morelos");
+            usuarioToken.setEmail("externos@snya.org.ar");
+            usuarioToken.setRol("ROL_FUNCINARIO");
+            usuarioToken.setSector("SNyA Reina La PLata");
             HttpHeaders headers = request.getHeaders();
             headers.add("token", JwtUtil.generateToken(usuarioToken));
         return execution.execute(request, body);

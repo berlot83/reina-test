@@ -20,14 +20,9 @@ public class NavControllers {
 		return "login";
 	}
 	
-	@GetMapping("/Rol")
-	public String rol() {
-		return "Rol";
-	}
-	
-	@GetMapping("/rolconsulta")
-	public String rolconsulta() {
-		return "rolconsulta";
+	@GetMapping("/asociador")
+	public String asociador() {
+		return "asociador";
 	}
 	
 	@GetMapping("/swagger-ui.html#!")

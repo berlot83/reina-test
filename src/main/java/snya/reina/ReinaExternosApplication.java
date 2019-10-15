@@ -9,7 +9,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @EntityScan(basePackages = { "snya.general.modelo", "snya.usuarios.modelo", "snya.reina.modelo", "snya.reinaweb.comun", "snya.archivoscliente", "snya.reina.config" })
 @SpringBootApplication(scanBasePackages = { "snya.reinaweb", "snya.reina", "snya.general", "snya.archivoscliente" })
 @EnableCaching
-@EnableWebMvc
+//@EnableWebMvc
 public class ReinaExternosApplication {
 
 	public static void main(String[] args) {
