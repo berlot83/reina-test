@@ -8,9 +8,9 @@ $(document).ready(function() {
 			"columns": [
 	            { "data" : "apellidoYNombre" },
 				{ "data" : "nombres" },
-				{ "data" : "tieneDocumento"},
+				{ "data" : "apellidos"},
 				{ 
-					"data" : "tipoDeDocumento.nombre",
+					"data" : "numeroDocumento",
 					"defaultContent": ""
 				},
 				{
@@ -66,6 +66,26 @@ $(document).ready(function() {
 			}
 		})	
 	});
+
+	/* Busqueda en un parámetro */
+	$("#botonBusquedaMixta3").click(function(){
+		tabla.clear().draw();
+		var buscar = document.getElementById("busquedaMixta3").value;
+		$.ajax({
+	    	type : "GET",
+	    	url: "api/jovenes/simple/busqueda3?buscar="	+ buscar,
+	        headers: {
+	        	"token":
+	   			"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJVc3VhcmlvIjoiYXhlbCIsIk5vbWJyZSI6IkF4ZWwiLCJBcGVsbGlkbyI6IkJlcmxvdCIsIkVtYWlsIjoiYmVybG90ODNAeWFob28uY29tLmFyIiwiUm9sIjoiUk9MX0ZVTkNJT05BUklPIiwiU2VjdG9yIjoiTEEgUExBVEEifQ.XaWl34KzNxYkJO5PeMBhA-zv5P3a4yA2FDvYyfweSO7enbOR_J8gm16tn3wW_RJLrddRitmfn-ECW0riEd3EpA"
+	        },
+		}).done(function(data) {	
+			console.log(JSON.stringify(data, null, 2));
+			for (var i = 0; i < data.length; i++) {
+				tabla.row.add(data[i]).draw(false);
+			}
+		})	
+	});
+
 	
 	/* Busqueda individual por id */
 	$("#botonBusquedaIndivual").click(function(){

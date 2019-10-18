@@ -62,6 +62,9 @@ public class JovenSimpleDTO {
 		this.domicilio = joven.getDomicilio() == null ? null : joven.getDomicilio().getDetalle();
 //		this.referentes = joven.getDetalleReferentes() == null ? null : joven.getDetalleReferentes();
 		this.historicidad = joven.getDetalleHistoricidad()  == null ? null : joven.getDetalleHistoricidad();
+		this.provinciaNacimiento = joven.getProvincia();
+		this.municipioNacimiento = joven.getMunicipio();
+		this.localidadNacimiento = joven.getLocalidad();
 	}
 
 	public Integer getId() {

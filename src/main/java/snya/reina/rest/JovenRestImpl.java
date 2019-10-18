@@ -84,6 +84,19 @@ public class JovenRestImpl implements JovenRest{
 			return new ResponseEntity(ReinaCte.NO_AUTORIZADO, HttpStatus.UNAUTHORIZED);
 		}
 	}
+	
+	/* En desarrollo */
+	@CrossOrigin
+	@GetMapping("/simple/busqueda3")
+	public ResponseEntity<List<JovenSimpleDTO>> obtenerJovenSimplificadoBusquedaMixto3(@RequestParam String buscar, HttpServletRequest request) {
+		UsuarioToken usuarioToken = JwtUtil.obtenerUsuarioToken(request);
+		if(FuncionesSeguridad.autorizar(usuarioToken, usuarioToken.getRol())) {
+			return ResponseEntity.ok(jovenServicioImpl.traerPorCriterioDeBusquedaMixto3(buscar));
+		}else{
+			return new ResponseEntity(ReinaCte.NO_AUTORIZADO, HttpStatus.UNAUTHORIZED);
+		}
+	}
+	
 
 	@CrossOrigin
 	@RequestMapping(value = "/expediente/{id}", method = RequestMethod.PUT, consumes = {MediaType.APPLICATION_JSON_UTF8_VALUE}, produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})

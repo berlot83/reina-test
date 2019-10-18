@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Set;
 import java.util.function.Consumer;
+import java.util.regex.Pattern;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
@@ -548,6 +549,46 @@ public class JovenServicioImpl {
 				.stream().parallel().map(j -> new JovenSimpleDTO(j)).collect(Collectors.toList());
 	}
 
+	/*
+	 * Busqueda por atributos/propiedades múltiples en un sólo campo = 'NumeroDocumento, Nombres,
+	 * Apellidos'
+	 */
+	public List<JovenSimpleDTO> traerPorCriterioDeBusquedaMixto3(String word) {
+		String regex = "(.)*(\\d)(.)*";      
+		Pattern pattern = Pattern.compile(regex);
+		boolean containsNumber = pattern.matcher(word).matches();
+		String	withSpace = "\\s+";
+
+		if(!containsNumber == true) {
+			if(word.contains(" ")){
+			String words[] = word.split(withSpace);
+			String apellido = words[0].trim();
+			String nombre = words[1].trim();
+
+			return jovenRepositorio
+					.findByIdIn(personaRepositorio
+							.findByApellidosLikeAndNombresLike("%" + apellido + "%","%" + nombre + "%")
+							.stream().parallel().filter(p -> p.getId() != null).map(p -> p.getId())
+							.collect(Collectors.toList()))
+					.stream().parallel().map(j -> new JovenSimpleDTO(j)).collect(Collectors.toList());
+			}else {
+				return jovenRepositorio
+						.findByIdIn(personaRepositorio
+								.findByApellidosIgnoreCaseContainingOrNombresIgnoreCaseContaining("%" + word.trim() + "%","%" + word.trim() + "%")
+								.stream().parallel().filter(p -> p.getId() != null).map(p -> p.getId())
+								.collect(Collectors.toList()))
+						.stream().parallel().map(j -> new JovenSimpleDTO(j)).collect(Collectors.toList());	
+			}
+		}else {
+			return jovenRepositorio
+					.findByIdIn(personaRepositorio
+							.findByNumeroDocumentoIgnoreCaseContaining(word.replaceAll(withSpace, ""))
+							.stream().parallel().filter(p -> p.getId() != null).map(p -> p.getId())
+							.collect(Collectors.toList()))
+					.stream().parallel().map(j -> new JovenSimpleDTO(j)).collect(Collectors.toList());
+		}
+	}
+	
 	public Joven findById(Integer idJoven) {
 		return jovenRepositorio.findOne(idJoven);
 	}

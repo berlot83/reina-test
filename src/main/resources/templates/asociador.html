@@ -27,26 +27,32 @@
 	<button class="btn btn-small btn-success" onclick="window.location.href='/index'">Inicio</button>
 		<div class="reinaDiv">
 			<h2>Reina:</h2>
-			<strong style="color:red">Estas llamadas de Reina ==> Reina son Ajax</strong>
+			<strong style="color:red">Estas llamadas de Reina ==> Reina son Ajax a modo de "Prueba de funcionamiento" de cada servicio.</strong>
 			<hr></hr>
 			<div class="pad30">
-				<strong>Búsqueda por id:</strong>
-				<input type="text" id="idBuscarIndividual" />
+				<strong>api/jovenes/simple/</strong>
+				<input type="text" id="idBuscarIndividual" placeholder="idJoven"/>
 				<button class="btn btn-success" id="botonBusquedaIndivual">Buscar</button>
 <!-- 				<button class="btn btn-success" onclick="buscarIndividual()">Buscar</button> -->
 <hr></hr>
 
-				<strong>Búsqueda mixta en un parámetro:</strong>
-				<input type="text" id="busquedaMixta1" />
+				<strong>api/jovenes/simple/busqueda1?</strong>
+				<input type="text" id="busquedaMixta1" placeholder="Doc/Apell/Nomb."/>
 <!-- 				<button class="btn btn-success" onclick="busquedaMixta1()" id="botonBusquedaMixta1">Buscar</button> -->
 				<button class="btn btn-success" id="botonBusquedaMixta1">Buscar</button>
 <hr></hr>
-				<strong>Búsqueda mixta en tres parámetros:</strong>
+				<strong>api/jovenes/simple/busqueda2?</strong>
 				<input type="text" id="paramDocumento" placeholder="Documento" />
 				<input type="text" id="paramApellido" placeholder="Apellido" />
 				<input type="text" id="paramNombre" placeholder="Nombre" />
 <!-- 				<button class="btn btn-success" onclick="busquedaMixta2()">Buscar</button> -->
 				<button class="btn btn-success" id="botonBusquedaMixta2">Buscar</button>
+<hr></hr>
+
+				<strong>api/jovenes/simple/busqueda3?</strong>
+				<input type="text" id="busquedaMixta3" placeholder="Doc/Apell. Nomb./Apell."/>
+<!-- 				<button class="btn btn-success" onclick="busquedaMixta3()" id="botonBusquedaMixta3">Buscar</button> -->
+				<button class="btn btn-success" id="botonBusquedaMixta3">Buscar</button>
 <hr></hr>
 
 <h4><strong>Resultados - <span style="color:darkgreen">Abrir la consola con F12 para ver Todos los resultados del JSON</span></strong></h4>
@@ -55,8 +61,8 @@
 						<tr>
 							<th>Apellidos y Nombres</th>
 							<th>Nombres</th>
-							<th>Tiene Doc.</th>
-							<th>Doc.nombre</th>
+							<th>Apellidos</th>
+							<th>Nro. Doc.</th>
 							<th>Documento</th>
 							<th>Sit. Doc</th>
 							<th>sexo</th>
@@ -68,8 +74,8 @@
 						<tr>
 							<th>Ap y Nom</th>
 							<th>Nombres</th>
-							<th>Tiene Doc.</th>
-							<th>Doc.nombre</th>
+							<th>Apellidos</th>
+							<th>Nro. Doc.</th>
 							<th>Documento</th>
 							<th>Sit. Doc</th>
 							<th>sexo</th>

@@ -29,7 +29,6 @@ public class Config {
         ClientHttpRequestInterceptor a = new DatosUsuarioInterceptor();
         List<ClientHttpRequestInterceptor> interceptors = Arrays.asList(a);
         restTemplate.setInterceptors(interceptors);
-
         return restTemplate;
     }
 }

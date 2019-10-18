@@ -17,11 +17,15 @@ public interface PersonaRepositorio extends JpaRepository<Persona, Long> {
 	/* sin uso Estos métodos funcionan por defecto con el comando LIKE % variable % de SQL */
 	List<Persona> findByNombresIgnoreCaseContaining(String nombres);
 	List<Persona> findByApellidosIgnoreCaseContaining(String apellidos);
-	List<Persona> findByNumeroDocumentoIgnoreCaseContaining(String numeroDocumento);
 	
 	/* Busqueda mixta 1 */
 	List<Persona> findByNumeroDocumentoLikeOrApellidosLikeOrNombresLike(String numeroDocumento, String apellidos, String nombres);
 
 	/* Busqueda mixta 2 */
 	List<Persona> findByNumeroDocumentoContainingAndApellidosContainingAndNombresContaining(String numeroDocumento, String apellidos, String nombres);
+
+	/* Busqueda mixta 3 */
+	List<Persona> findByApellidosLikeAndNombresLike(String apellidos, String nombres);
+	List<Persona> findByNumeroDocumentoIgnoreCaseContaining(String numeroDocumento);
+	List<Persona> findByApellidosIgnoreCaseContainingOrNombresIgnoreCaseContaining(String apellidos, String nombres);
 }
