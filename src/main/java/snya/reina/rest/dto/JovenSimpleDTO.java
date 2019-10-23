@@ -33,7 +33,7 @@ public class JovenSimpleDTO {
 	private String domicilio;
 	private String referentes;
 	private String historicidad;
-
+	
 	public JovenSimpleDTO() {
 
 	}

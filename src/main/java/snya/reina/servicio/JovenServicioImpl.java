@@ -1,23 +1,12 @@
 package snya.reina.servicio;
 
-import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Set;
-import java.util.function.Consumer;
 import java.util.regex.Pattern;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
-
-import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
-
-import org.hibernate.annotations.NotFound;
-import org.hibernate.annotations.NotFoundAction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import snya.archivoscliente.ArchivoCliente;
