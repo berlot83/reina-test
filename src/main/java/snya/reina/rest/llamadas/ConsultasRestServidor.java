@@ -35,6 +35,9 @@ public class ConsultasRestServidor {
 	    		parameters,
 	    		new ParameterizedTypeReference<List<JovenReunaDTO>>(){});
 	   List<JovenReunaDTO> joven = response.getBody();
+	   ObjectMapper mapper = new ObjectMapper();
+	   String json = mapper.writeValueAsString(joven);
+	   System.out.println(json);
 	}
 	
 	/* Devuelve Joven determinado de reuna */
@@ -71,7 +74,7 @@ public class ConsultasRestServidor {
 	
 	public static void main(String[] args) throws JsonProcessingException {
 //		ConsultasRestServidor.getJovenReunaPorLegajo("68676", "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJBZG1pbmluc3RyYWRvciIsIk5vbWJyZSI6Ik1hcmNlbG8iLCJBcGVsbGlkbyI6IlBlcmV5cmEiLCJFbWFpbCI6Im1hcmNlbG9Ac255YS5jb20uYXIiLCJSb2wiOiJBZG1pbmluc3RyYWRvciIsIlNlY3RvciI6IlNOWUEgTGEgUGxhdGEifQ.UdvtF3a-lFlDghso8EK4e3bCVY5t5YdzsxhbbjCqGGteqbaKSwnvNJAoKWF1E9sRCWJWNi3o1-Z6X9ujdj4uPg");
-//		ConsultasRestServidor.getJovenReunaBuscar("25", "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJBZG1pbmluc3RyYWRvciIsIk5vbWJyZSI6Ik1hcmNlbG8iLCJBcGVsbGlkbyI6IlBlcmV5cmEiLCJFbWFpbCI6Im1hcmNlbG9Ac255YS5jb20uYXIiLCJSb2wiOiJBZG1pbmluc3RyYWRvciIsIlNlY3RvciI6IlNOWUEgTGEgUGxhdGEifQ.UdvtF3a-lFlDghso8EK4e3bCVY5t5YdzsxhbbjCqGGteqbaKSwnvNJAoKWF1E9sRCWJWNi3o1-Z6X9ujdj4uPg");
+		ConsultasRestServidor.getJovenReunaBuscar("100", "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJBZG1pbmluc3RyYWRvciIsIk5vbWJyZSI6Ik1hcmNlbG8iLCJBcGVsbGlkbyI6IlBlcmV5cmEiLCJFbWFpbCI6Im1hcmNlbG9Ac255YS5jb20uYXIiLCJSb2wiOiJBZG1pbmluc3RyYWRvciIsIlNlY3RvciI6IlNOWUEgTGEgUGxhdGEifQ.UdvtF3a-lFlDghso8EK4e3bCVY5t5YdzsxhbbjCqGGteqbaKSwnvNJAoKWF1E9sRCWJWNi3o1-Z6X9ujdj4uPg");
 //		ConsultasRestServidor.getIntervencionReuna("340163", "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJBZG1pbmluc3RyYWRvciIsIk5vbWJyZSI6Ik1hcmNlbG8iLCJBcGVsbGlkbyI6IlBlcmV5cmEiLCJFbWFpbCI6Im1hcmNlbG9Ac255YS5jb20uYXIiLCJSb2wiOiJBZG1pbmluc3RyYWRvciIsIlNlY3RvciI6IlNOWUEgTGEgUGxhdGEifQ.UdvtF3a-lFlDghso8EK4e3bCVY5t5YdzsxhbbjCqGGteqbaKSwnvNJAoKWF1E9sRCWJWNi3o1-Z6X9ujdj4uPg");
 		
 	}

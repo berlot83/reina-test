@@ -2,6 +2,8 @@ package snya.reina.rest.interfaces;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.http.ResponseEntity;
+
+import snya.reina.ReinaException;
 import snya.reina.rest.dto.AsociadorDTO;
 import snya.reina.rest.dto.JovenSimpleDTO;
 
@@ -11,5 +13,5 @@ public interface JovenRest {
 	public ResponseEntity<List<JovenSimpleDTO>> obtenerJovenSimplificadoBusquedaMixto1(String buscar, HttpServletRequest request);
 	public ResponseEntity<List<JovenSimpleDTO>> obtenerJovenSimplificadoBusquedaMixto2(String numeroDocumento, String apellidos, String nombres, HttpServletRequest request);
 	public ResponseEntity<List<JovenSimpleDTO>> obtenerJovenSimplificadoBusquedaMixto3(String buscar, HttpServletRequest request);
-	public ResponseEntity<String> actualizarJoven(Integer id, AsociadorDTO asociador, HttpServletRequest request);
+	public ResponseEntity<String> actualizarJoven(Integer id, AsociadorDTO asociador, HttpServletRequest request) throws ReinaException;
 }

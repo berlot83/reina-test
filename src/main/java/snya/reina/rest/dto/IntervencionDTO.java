@@ -1,10 +1,19 @@
 package snya.reina.rest.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
+@JsonInclude(Include.NON_NULL)
 public class IntervencionDTO {
 	@JsonProperty(value="Id")
 	private String id;
+	@JsonProperty(value="Detalle_Intervencion")
+	private String detalleIntervencion;
+	@JsonProperty(value="Observaciones")
+	private String observaciones;
+	@JsonProperty(value="Id_Legajo")
+	private String idLegajo;
 	@JsonProperty(value="Fecha")
 	private String fecha;
 	@JsonProperty(value="Zonal")
@@ -17,18 +26,6 @@ public class IntervencionDTO {
 	private String motivo;
 	@JsonProperty(value="Nombre_Estado")
 	private String nombreEstado;
-
-	public IntervencionDTO(String id, String fecha, String zonal, String local, String derivadoPor, String motivo,
-			String nombreEstado) {
-		super();
-		this.id = id;
-		this.fecha = fecha;
-		this.zonal = zonal;
-		this.local = local;
-		this.derivadoPor = derivadoPor;
-		this.motivo = motivo;
-		this.nombreEstado = nombreEstado;
-	}
 	
 	public IntervencionDTO() {
 		

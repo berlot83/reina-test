@@ -14,9 +14,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
 import io.swagger.annotations.Api;
 import snya.reina.ReinaCte;
+import snya.reina.ReinaException;
+import snya.reina.modelo.joven.Caratulador;
+import snya.reina.modelo.joven.Expediente;
 import snya.reina.modelo.joven.Joven;
+import snya.reina.repositorios.ExpedienteRepositorio;
 import snya.reina.rest.dto.AsociadorDTO;
 import snya.reina.rest.dto.JovenSimpleDTO;
 import snya.reina.rest.interfaces.JovenRest;
@@ -44,6 +52,9 @@ public class JovenRestImpl implements JovenRest{
 	@Autowired
 	ExpedienteServicioImpl expedienteServicioImpl;
 
+	@Autowired
+	ExpedienteRepositorio expedienteRepositorio;
+	
 	@CrossOrigin
 	@GetMapping("/{id}")
 	public Joven obtenerJoven(@PathVariable Integer id) {
@@ -85,7 +96,6 @@ public class JovenRestImpl implements JovenRest{
 		}
 	}
 	
-	/* En desarrollo */
 	@CrossOrigin
 	@GetMapping("/simple/busqueda3")
 	public ResponseEntity<List<JovenSimpleDTO>> obtenerJovenSimplificadoBusquedaMixto3(@RequestParam String buscar, HttpServletRequest request) {
@@ -97,34 +107,35 @@ public class JovenRestImpl implements JovenRest{
 		}
 	}
 	
-
+	/* Este enpoint asocia un registro de Reina con un registro de Reuna */
 	@CrossOrigin
-	@RequestMapping(value = "/expediente/{id}", method = RequestMethod.PUT, consumes = {MediaType.APPLICATION_JSON_UTF8_VALUE}, produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
-	public @ResponseBody ResponseEntity<String> actualizarJoven(@PathVariable Integer id, @RequestBody AsociadorDTO asociador, HttpServletRequest request) {
-//		Joven jovenEnDB = null;
-//		if (id != null){
-//				if(jovenServicioImpl.traerPorId(id) != null) {
-//					jovenEnDB = jovenServicioImpl.traerPorId(id);
-//					
-//					if (legajo != null) {
-						/* Asociación de legajos */
-						try{
-							expedienteServicioImpl.agergarExpedienteExterno(id, asociador.getIdCaratulador(), asociador.getLegajo());
-							return ResponseEntity.ok().body("Operación realizada con éxito");
-						}catch(Exception error) {
-							return ResponseEntity.badRequest().body("El registro no fue encontrado o sólo no fue exitosa la insercción");
-						}
-						/* debería ser 201 "Created" o 204 "No Content" para PUT, sin embargo puede dejarse 200 por defecto */
-//						/* Asociación de legajos */
-//					} else {
-//						return ResponseEntity.badRequest().body("El legajo es nulo");
-//					}					
-//				}else {
-//					throw new ReinaException(ReinaCte.VALOR_NULO + ", el objeto buscado es nulo y no se puede encontrar");
-//				}
-//		}else {
-//			throw new ReinaException(ReinaCte.VALOR_NULO + ", parámetro 'id' null");
-//		}
+	@RequestMapping(value = "/expediente/{idJoven}", method = RequestMethod.PUT, consumes = {MediaType.APPLICATION_JSON_UTF8_VALUE}, produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
+	public @ResponseBody ResponseEntity<String> actualizarJoven(@PathVariable Integer idJoven, @RequestBody AsociadorDTO asociador, HttpServletRequest request) throws ReinaException {
+		Expediente exp = expedienteRepositorio.findOne(idJoven);
+		
+		if( exp.getLegajo() == null ) {
+			if(idJoven != null && asociador.getIdCaratulador() != null && asociador.getLegajo() != null) {
+				expedienteServicioImpl.agergarExpedienteExterno(idJoven, asociador.getIdCaratulador(), asociador.getLegajo());
+				return  new ResponseEntity("El objeto fue modificado correctamente", HttpStatus.CREATED);
+			}else {
+				return new ResponseEntity("Revise los parámetros que está enviando al servidor.", HttpStatus.BAD_REQUEST);
+			}
+		}else {
+			return new ResponseEntity("El joven ya tiene asignado otro legajo.", HttpStatus.BAD_REQUEST);
+		}
+		
+	}
+	
+	@CrossOrigin
+	@GetMapping("/expediente/{id}")
+	public ResponseEntity<String> getExpediente(@PathVariable Integer id) {
+		Expediente exp = expedienteRepositorio.findOne(id);
+		System.out.println(exp.getLegajo());
+		if( exp.getLegajo() == null ) {
+			return new ResponseEntity("Entró", HttpStatus.OK);
+		}else {
+			return new ResponseEntity("No entró", HttpStatus.BAD_REQUEST);
+		}
 	}
 
 }

@@ -1,9 +1,11 @@
 package snya.reina.rest.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
+@JsonInclude(Include.NON_NULL)
 public class FamiliarDTO {
-	
 	@JsonProperty(value="Nombre")
 	private String nombre;
 	@JsonProperty(value="Documento")
