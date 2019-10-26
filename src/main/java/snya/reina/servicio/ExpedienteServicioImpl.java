@@ -16,6 +16,7 @@ import snya.reina.datos.joven.TipoDeEstadoExpedienteDAO;
 import snya.reina.modelo.joven.Caratulador;
 import snya.reina.modelo.joven.Expediente;
 import snya.reina.modelo.joven.Joven;
+import snya.reina.repositorios.ExpedienteRepositorio;
 import snya.reina.serviciomodelo.joven.AdministradorDeExpediente;
 
 @Service
@@ -29,6 +30,8 @@ public class ExpedienteServicioImpl {
 	private TipoDeEstadoExpedienteDAO tipoDeEstadoExpedienteDAO;
 	@Autowired	
 	private ExpedienteDAO expedienteDAO;
+	@Autowired
+	private ExpedienteRepositorio expedienteRepositorio;
 	
 	@Transactional
 	public void generarExpediente(Integer idJoven, Long numeroExpediente) throws ReinaException {
@@ -77,6 +80,10 @@ public class ExpedienteServicioImpl {
 		
 		administrador.desarchivarExpediente(expediente);
 		jovenDAO.actualizar(joven);
+	}
+	
+	public Expediente traerExpediente(Integer id) {
+		return expedienteRepositorio.findOne(id);
 	}
 		
 	public List<Caratulador> traerCaratuladores() {

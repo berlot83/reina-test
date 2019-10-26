@@ -14,17 +14,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
-
 import io.swagger.annotations.Api;
 import snya.reina.ReinaCte;
 import snya.reina.ReinaException;
-import snya.reina.modelo.joven.Caratulador;
 import snya.reina.modelo.joven.Expediente;
 import snya.reina.modelo.joven.Joven;
-import snya.reina.repositorios.ExpedienteRepositorio;
 import snya.reina.rest.dto.AsociadorDTO;
 import snya.reina.rest.dto.JovenSimpleDTO;
 import snya.reina.rest.interfaces.JovenRest;
@@ -51,9 +45,6 @@ public class JovenRestImpl implements JovenRest{
 	
 	@Autowired
 	ExpedienteServicioImpl expedienteServicioImpl;
-
-	@Autowired
-	ExpedienteRepositorio expedienteRepositorio;
 	
 	@CrossOrigin
 	@GetMapping("/{id}")
@@ -111,7 +102,7 @@ public class JovenRestImpl implements JovenRest{
 	@CrossOrigin
 	@RequestMapping(value = "/expediente/{idJoven}", method = RequestMethod.PUT, consumes = {MediaType.APPLICATION_JSON_UTF8_VALUE}, produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
 	public @ResponseBody ResponseEntity<String> actualizarJoven(@PathVariable Integer idJoven, @RequestBody AsociadorDTO asociador, HttpServletRequest request) throws ReinaException {
-		Expediente exp = expedienteRepositorio.findOne(idJoven);
+		Expediente exp = expedienteServicioImpl.traerExpediente(idJoven);
 		
 		if( exp.getLegajo() == null ) {
 			if(idJoven != null && asociador.getIdCaratulador() != null && asociador.getLegajo() != null) {
@@ -129,7 +120,7 @@ public class JovenRestImpl implements JovenRest{
 	@CrossOrigin
 	@GetMapping("/expediente/{id}")
 	public ResponseEntity<String> getExpediente(@PathVariable Integer id) {
-		Expediente exp = expedienteRepositorio.findOne(id);
+		Expediente exp = expedienteServicioImpl.traerExpediente(id);
 		System.out.println(exp.getLegajo());
 		if( exp.getLegajo() == null ) {
 			return new ResponseEntity("Entró", HttpStatus.OK);

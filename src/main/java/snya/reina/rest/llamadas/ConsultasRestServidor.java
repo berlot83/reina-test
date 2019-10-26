@@ -21,6 +21,7 @@ public class ConsultasRestServidor {
 	public static final String urlJovenReunaPorLegajo = "http://163.10.35.7:8080/reuna/api2/dameLegajo?id=";
 	public static final String urlIntervencionReuna = "http://163.10.35.7:8080/reuna/api2/dameIntervencion?id=";
 	
+	
 	/* Devuelve Joven determinado de reuna */
 	public static void getJovenReunaBuscar(String buscar, String token) throws JsonProcessingException {
 //		UsuarioToken usuarioToken = new UsuarioToken();

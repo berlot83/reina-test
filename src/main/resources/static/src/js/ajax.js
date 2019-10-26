@@ -91,7 +91,6 @@ $(document).ready(function() {
 	$("#botonBusquedaIndivual").click(function(){
 		tabla.clear().draw();
 		var id = document.getElementById("idBuscarIndividual").value;
-		
 		$.ajax({
 	    	type : "GET",
 	    	url: "api/jovenes/simple/"+ id,
@@ -103,10 +102,40 @@ $(document).ready(function() {
 			console.log(JSON.stringify(data, null, 2));
 			tabla.row.add(data).draw(false);
 		})	
-		
 	});
-	
 } );
+
+
+$(document).ready(function() {
+	$("#botonBusquedaInforme").click(function(){
+		var idInforme = document.getElementById("busquedaInforme").value;
+		$.ajax({
+	    	type : "GET",
+	    	url: "api/informes/simple/"+ idInforme,
+	        headers: {
+	        	"token":
+	   			"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJVc3VhcmlvIjoiYXhlbCIsIk5vbWJyZSI6IkF4ZWwiLCJBcGVsbGlkbyI6IkJlcmxvdCIsIkVtYWlsIjoiYmVybG90ODNAeWFob28uY29tLmFyIiwiUm9sIjoiUk9MX0ZVTkNJT05BUklPIiwiU2VjdG9yIjoiTEEgUExBVEEifQ.XaWl34KzNxYkJO5PeMBhA-zv5P3a4yA2FDvYyfweSO7enbOR_J8gm16tn3wW_RJLrddRitmfn-ECW0riEd3EpA"
+	        },
+		}).done(function(data) {
+				$.alert({
+					type: 'blue',
+					title: data.institucion,
+					content: "<html><body><div>"+ data.texto +"</div></body></html>",
+					columnClass: 'large/l'
+				});
+				console.log(JSON.stringify(data, null, 2));
+		}).fail(function(error) {
+			$.alert({
+				type: 'red',
+				title: 'Error',
+				content: "<html><body><div>"+ error.responseJSON.message +"</div></body></html>",
+				columnClass: 'small/s'
+			});
+			/* Quitar en producción */
+			console.log('Error:', error);
+		});	
+	});	
+});
 
 /* Backup de funciones individuales,que llaman a endpoints, hay que volver a agregar los tags html si se llegan a usar */
 //function buscarIndividual(){

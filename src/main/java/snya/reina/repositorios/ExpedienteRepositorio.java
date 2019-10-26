@@ -4,6 +4,6 @@ import org.springframework.stereotype.Repository;
 import snya.reina.modelo.joven.Expediente;
 
 @Repository
-public interface ExpedienteRepositorio  extends JpaRepository<Expediente, Integer>{
+public interface ExpedienteRepositorio extends JpaRepository<Expediente, Integer>{
 
 }

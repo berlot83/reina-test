@@ -298,13 +298,16 @@ public class InformeServicioImpl {
 		return informe;
 	}
 
-	public InformeDTO traerInformeSimplificado(Integer id) throws MalformedURLException {
+	public InformeDTO traerInformeSimplificado(Integer id) throws Exception {
 		Informe informe = informeRepositorio.findById(id);
 		InformeDTO informeDTO = null;
-		if(informe != null) 
+		if(informe != null) {
 			informeDTO = new InformeDTO(informe);
-		informeDTO.agregarUrlArchivos(new URL("http://google.com/"));
-		return informeDTO;
+			informeDTO.agregarUrlArchivos(new URL("http://google.com/"));
+			return informeDTO;
+		}else {
+			throw new Exception("El informe que busca no existe en la base de datos.");
+		}
 	}
 	
 }

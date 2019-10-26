@@ -13,7 +13,9 @@
 <script type="text/javascript"
 	src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="src/js/ajax.js"></script>
-<!-- TODO ver que pasa con la ruta de los CSS, JS, img -->
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css"></link>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
 <title>Asociador de Reina y Reuna</title>
 <style type="text/css">
 .pad30 {
@@ -86,6 +88,12 @@
 				</table>
 			</div>
 		</div>
+
+		<hr></hr>
+		<br></br>
+				<strong>api/informes/simple/</strong>
+				<input type="text" id="busquedaInforme" placeholder="id informe"/>
+				<button class="btn btn-success" id="botonBusquedaInforme">Buscar informe</button>		
 		
 		<hr></hr>
 		<br></br>
@@ -98,6 +106,4 @@
 		</div>
 	</div>
 </body>
-
-
 </html>
