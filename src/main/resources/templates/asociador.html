@@ -35,25 +35,21 @@
 				<strong>api/jovenes/simple/</strong>
 				<input type="text" id="idBuscarIndividual" placeholder="idJoven"/>
 				<button class="btn btn-success" id="botonBusquedaIndivual">Buscar</button>
-<!-- 				<button class="btn btn-success" onclick="buscarIndividual()">Buscar</button> -->
 <hr></hr>
 
 				<strong>api/jovenes/simple/busqueda1?</strong>
 				<input type="text" id="busquedaMixta1" placeholder="Doc/Apell/Nomb."/>
-<!-- 				<button class="btn btn-success" onclick="busquedaMixta1()" id="botonBusquedaMixta1">Buscar</button> -->
 				<button class="btn btn-success" id="botonBusquedaMixta1">Buscar</button>
 <hr></hr>
 				<strong>api/jovenes/simple/busqueda2?</strong>
 				<input type="text" id="paramDocumento" placeholder="Documento" />
 				<input type="text" id="paramApellido" placeholder="Apellido" />
 				<input type="text" id="paramNombre" placeholder="Nombre" />
-<!-- 				<button class="btn btn-success" onclick="busquedaMixta2()">Buscar</button> -->
 				<button class="btn btn-success" id="botonBusquedaMixta2">Buscar</button>
 <hr></hr>
 
 				<strong>api/jovenes/simple/busqueda3?</strong>
 				<input type="text" id="busquedaMixta3" placeholder="Doc/Apell. Nomb./Apell."/>
-<!-- 				<button class="btn btn-success" onclick="busquedaMixta3()" id="botonBusquedaMixta3">Buscar</button> -->
 				<button class="btn btn-success" id="botonBusquedaMixta3">Buscar</button>
 <hr></hr>
 
@@ -93,7 +89,7 @@
 		<br></br>
 				<strong>api/informes/simple/</strong>
 				<input type="text" id="busquedaInforme" placeholder="id informe"/>
-				<button class="btn btn-success" id="botonBusquedaInforme">Buscar informe</button>		
+				<button class="btn btn-success" id="botonBusquedaInforme">Buscar informe</button>
 		
 		<hr></hr>
 		<br></br>
@@ -102,7 +98,29 @@
 			<h2>Reuna:</h2>
 			<strong style="color:red">Estas llamadas de Reina ==> Reuna son de Servidor a servidor</strong>
 			<hr></hr>
-			<div id="reuna"></div>
+			
+				<strong>reuna/api2/jovenes?buscar=</strong>
+				<input type="text" id="busquedaReuna1" placeholder="Doc/Apell/Nomb."/>
+				<button class="btn btn-success" id="botonBusquedaReuna1">Buscar Joven</button>
+			
+			<hr></hr>
+			<br></br>
+				
+				<strong>reuna/api2/dameLegajo?id=</strong>
+				<input type="text" id="busquedaLegajo" placeholder="Doc/Apell/Nomb."/>
+				<button class="btn btn-success" id="botonBusquedaLegajo">Buscar Legajo</button>
+				
+			<hr></hr>
+			<br></br>
+			
+				<strong>reuna/api2/dameIntervencion?id=</strong>
+				<input type="text" id="busquedaIntervencion" placeholder="Doc/Apell/Nomb."/>
+				<button class="btn btn-success" id="botonBusquedaIntervencion">Buscar intervención</button>
+			
+			<hr></hr>
+			<br></br>
+			<br></br>
+			<br></br>
 		</div>
 	</div>
 </body>

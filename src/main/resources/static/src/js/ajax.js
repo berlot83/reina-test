@@ -1,4 +1,5 @@
 				
+/* Calls a Reina */
 $(document).ready(function() {
 	/* Inicializo la variable de reusultados */
 	var data;
@@ -51,7 +52,6 @@ $(document).ready(function() {
 		var documento = document.getElementById("paramDocumento").value;
 		var nombre = document.getElementById("paramNombre").value;
 		var apellido = document.getElementById("paramApellido").value;
-	
 		$.ajax({
 	    	type : "GET",
 	    	url : "api/jovenes/simple/busqueda2?numeroDocumento=" + documento + "&apellidos="+ apellido + "&nombres=" + nombre,
@@ -85,7 +85,6 @@ $(document).ready(function() {
 			}
 		})	
 	});
-
 	
 	/* Busqueda individual por id */
 	$("#botonBusquedaIndivual").click(function(){
@@ -103,10 +102,7 @@ $(document).ready(function() {
 			tabla.row.add(data).draw(false);
 		})	
 	});
-} );
 
-
-$(document).ready(function() {
 	$("#botonBusquedaInforme").click(function(){
 		var idInforme = document.getElementById("busquedaInforme").value;
 		$.ajax({
@@ -123,6 +119,37 @@ $(document).ready(function() {
 					content: "<html><body><div>"+ data.texto +"</div></body></html>",
 					columnClass: 'large/l'
 				});
+				console.log(JSON.stringify(data, null, 2));
+		}).fail(function(error) {
+			$.alert({
+				type: 'red',
+				title: 'Error',
+				content: "<html><body><div>"+ error.responseJSON.message +"</div></body></html>",
+				columnClass: 'small/s'
+			});
+			/* Quitar en producción */
+			console.log('Error:', error);
+		});	
+	});
+
+} );
+
+/* Calls a Reuna */
+$(document).ready(function() {
+	$("#botonBusquedaReuna1").click(function(){
+		var buscar = document.getElementById("busquedaReuna1").value;
+		$.ajax({
+	    	type : "GET",
+	    	url: "http://163.10.35.7:8080/reuna/api2/jovenes?buscar="+ buscar,
+	        headers: {
+	        	"Content-Type": "application/json; charset=UTF-8",
+	        	"Access-Control-Allow-Origin": "*",
+	        	"token":"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJBZG1pbmluc3RyYWRvciIsIk5vbWJyZSI6Ik1hcmNlbG8iLCJBcGVsbGlkbyI6IlBlcmV5cmEiLCJFbWFpbCI6Im1hcmNlbG9Ac255YS5jb20uYXIiLCJSb2wiOiJBZG1pbmluc3RyYWRvciIsIlNlY3RvciI6IlNOWUEgTGEgUGxhdGEifQ.UdvtF3a-lFlDghso8EK4e3bCVY5t5YdzsxhbbjCqGGteqbaKSwnvNJAoKWF1E9sRCWJWNi3o1-Z6X9ujdj4uPg",
+	        	"Access-Control-Allow-Methods": "GET, POST, PUT, DELETE",
+	        	"Access-Control-Max-Age":" 3600",
+	        	"Access-Control-Allow-Headers":"Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With"
+	        },
+		}).done(function(data) {
 				console.log(JSON.stringify(data, null, 2));
 		}).fail(function(error) {
 			$.alert({
