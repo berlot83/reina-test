@@ -9,7 +9,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import snya.reina.rest.dto.IntervencionDTO;
 import snya.reina.rest.dto.JovenReunaDTO;
 
@@ -23,23 +22,24 @@ public class ConsultasRestServidor {
 	
 	
 	/* Devuelve Joven determinado de reuna */
-	public static void getJovenReunaBuscar(String buscar, String token) throws JsonProcessingException {
-//		UsuarioToken usuarioToken = new UsuarioToken();
-//		token = JwtUtil.generateToken(usuarioToken);
-		HttpHeaders headers = new HttpHeaders();
-	    headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON_UTF8, MediaType.APPLICATION_JSON));
-	    headers.add("Content-Type", "application/json");
-	    headers.set("token", token);	    
-	    HttpEntity<String> parameters = new HttpEntity<>("params", headers);
-	    ResponseEntity<List<JovenReunaDTO>> response = new RestTemplate().exchange(urlJovenReunaBuscar + buscar,
-	    		HttpMethod.GET,
-	    		parameters,
-	    		new ParameterizedTypeReference<List<JovenReunaDTO>>(){});
-	   List<JovenReunaDTO> joven = response.getBody();
-	   ObjectMapper mapper = new ObjectMapper();
-	   String json = mapper.writeValueAsString(joven);
-	   System.out.println(json);
-	}
+//	public static void getJovenReunaBuscar(String buscar, String token, HttpServletRequest request) throws JsonProcessingException {
+//String session = request.getSession().getAttribute(""); 
+//		//		UsuarioToken usuarioToken = new UsuarioToken();
+////		token = JwtUtil.generateToken(usuarioToken);
+//		HttpHeaders headers = new HttpHeaders();
+//	    headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON_UTF8, MediaType.APPLICATION_JSON));
+//	    headers.add("Content-Type", "application/json");
+//	    headers.set("token", token);	    
+//	    HttpEntity<String> parameters = new HttpEntity<>("params", headers);
+//	    ResponseEntity<List<JovenReunaDTO>> response = new RestTemplate().exchange(urlJovenReunaBuscar + buscar,
+//	    		HttpMethod.GET,
+//	    		parameters,
+//	    		new ParameterizedTypeReference<List<JovenReunaDTO>>(){});
+//	   List<JovenReunaDTO> joven = response.getBody();
+//	   ObjectMapper mapper = new ObjectMapper();
+//	   String json = mapper.writeValueAsString(joven);
+//	   System.out.println(json);
+//	}
 	
 	/* Devuelve Joven determinado de reuna */
 	public static void getJovenReunaPorLegajo(String legajo, String token) throws JsonProcessingException {
@@ -75,7 +75,7 @@ public class ConsultasRestServidor {
 	
 	public static void main(String[] args) throws JsonProcessingException {
 //		ConsultasRestServidor.getJovenReunaPorLegajo("68676", "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJBZG1pbmluc3RyYWRvciIsIk5vbWJyZSI6Ik1hcmNlbG8iLCJBcGVsbGlkbyI6IlBlcmV5cmEiLCJFbWFpbCI6Im1hcmNlbG9Ac255YS5jb20uYXIiLCJSb2wiOiJBZG1pbmluc3RyYWRvciIsIlNlY3RvciI6IlNOWUEgTGEgUGxhdGEifQ.UdvtF3a-lFlDghso8EK4e3bCVY5t5YdzsxhbbjCqGGteqbaKSwnvNJAoKWF1E9sRCWJWNi3o1-Z6X9ujdj4uPg");
-		ConsultasRestServidor.getJovenReunaBuscar("100", "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJBZG1pbmluc3RyYWRvciIsIk5vbWJyZSI6Ik1hcmNlbG8iLCJBcGVsbGlkbyI6IlBlcmV5cmEiLCJFbWFpbCI6Im1hcmNlbG9Ac255YS5jb20uYXIiLCJSb2wiOiJBZG1pbmluc3RyYWRvciIsIlNlY3RvciI6IlNOWUEgTGEgUGxhdGEifQ.UdvtF3a-lFlDghso8EK4e3bCVY5t5YdzsxhbbjCqGGteqbaKSwnvNJAoKWF1E9sRCWJWNi3o1-Z6X9ujdj4uPg");
+//		ConsultasRestServidor.getJovenReunaBuscar("100", "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJBZG1pbmluc3RyYWRvciIsIk5vbWJyZSI6Ik1hcmNlbG8iLCJBcGVsbGlkbyI6IlBlcmV5cmEiLCJFbWFpbCI6Im1hcmNlbG9Ac255YS5jb20uYXIiLCJSb2wiOiJBZG1pbmluc3RyYWRvciIsIlNlY3RvciI6IlNOWUEgTGEgUGxhdGEifQ.UdvtF3a-lFlDghso8EK4e3bCVY5t5YdzsxhbbjCqGGteqbaKSwnvNJAoKWF1E9sRCWJWNi3o1-Z6X9ujdj4uPg");
 //		ConsultasRestServidor.getIntervencionReuna("340163", "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJBZG1pbmluc3RyYWRvciIsIk5vbWJyZSI6Ik1hcmNlbG8iLCJBcGVsbGlkbyI6IlBlcmV5cmEiLCJFbWFpbCI6Im1hcmNlbG9Ac255YS5jb20uYXIiLCJSb2wiOiJBZG1pbmluc3RyYWRvciIsIlNlY3RvciI6IlNOWUEgTGEgUGxhdGEifQ.UdvtF3a-lFlDghso8EK4e3bCVY5t5YdzsxhbbjCqGGteqbaKSwnvNJAoKWF1E9sRCWJWNi3o1-Z6X9ujdj4uPg");
 		
 	}

@@ -1,6 +1,9 @@
 package snya.reina.rest.dto;
 
 import java.util.Date;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import snya.general.modelo.Localidad;
 import snya.general.modelo.Municipio;
 import snya.general.modelo.Nacionalidad;
@@ -22,6 +25,7 @@ public class JovenSimpleDTO {
 	private String numeroDocumento;
 	private String situacionDocumentacion;
 	private String sexo;
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
 	private Date fechaNacimiento;
 	private Integer edad;
 	private Nacionalidad nacionalidad;

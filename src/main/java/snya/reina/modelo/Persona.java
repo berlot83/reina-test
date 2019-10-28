@@ -13,6 +13,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import org.hibernate.envers.Audited;
 import org.hibernate.envers.RelationTargetAuditMode;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import snya.general.modelo.Barrio;
 import snya.general.modelo.Domicilio;
 import snya.general.modelo.EstadoCivil;

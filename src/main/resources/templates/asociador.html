@@ -94,9 +94,9 @@
 		<hr></hr>
 		<br></br>
 		
-		<div id="reunaDiv">
+		<div class="reunaDiv">
 			<h2>Reuna:</h2>
-			<strong style="color:red">Estas llamadas de Reina ==> Reuna son de Servidor a servidor</strong>
+			<strong style="color:red">Estas llamadas de Reina ==> Reuna son sincrónicas de Servidor a servidor (No Ajax, temporales)</strong>
 			<hr></hr>
 			
 				<strong>reuna/api2/jovenes?buscar=</strong>
@@ -105,22 +105,142 @@
 			
 			<hr></hr>
 			<br></br>
+			
+			<h4><strong>Resultados - <span style="color:darkgreen">Abrir la consola con F12 para ver Todos los resultados del JSON</span></strong></h4>
+			<table id="tablaReuna" class="display">
+					<thead>
+						<tr>
+							<th>Legajo</th>
+							<th>Nomb. y Ap.</th>
+							<th>Fecha nac.</th>
+							<th>Tiene Doc.</th>
+							<th>Doc.</th>
+							<th>Cuil</th>
+							<th>Sexo</th>
+							<th>Nacionalidad</th>
+							<th>Municipio</th>
+							<th>Provincia</th>
+							<th>Dirección</th>
+							<th>Teléfono</th>
+							<th>Sector</th>
+							<th>Local</th>
+							<th>Acciones</th>
+						</tr>
+					</thead>
+					<tfoot>
+						<tr>
+							<th>Legajo</th>
+							<th>Nomb. y Ap.</th>
+							<th>Fecha nac.</th>
+							<th>Tiene Doc.</th>
+							<th>Doc.</th>
+							<th>Cuil</th>
+							<th>Sexo</th>
+							<th>Nacionalidad</th>
+							<th>Municipio</th>
+							<th>Provincia</th>
+							<th>Dirección</th>
+							<th>Teléfono</th>
+							<th>Sector</th>
+							<th>Local</th>
+							<th>Acciones</th>
+						</tr>
+					</tfoot>
+				</table>
+				
+			<hr></hr>
+			<br></br>
+			<br></br>
 				
 				<strong>reuna/api2/dameLegajo?id=</strong>
 				<input type="text" id="busquedaLegajo" placeholder="Doc/Apell/Nomb."/>
 				<button class="btn btn-success" id="botonBusquedaLegajo">Buscar Legajo</button>
+			<hr></hr>
+			<br></br>
+
+			<h4><strong>Resultados - <span style="color:darkgreen">Abrir la consola con F12 para ver Todos los resultados del JSON</span></strong></h4>
+			<table id="tablaReunaLegajo" class="display">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Nomb. y Ap.</th>
+							<th>Fecha nac.</th>
+							<th>Doc.</th>
+							<th>Cuil</th>
+							<th>Sexo</th>
+							<th>Municipio</th>
+							<th>Provincia</th>
+							<th>Sector</th>
+							<th>Local</th>
+							<th>Acciones</th>
+						</tr>
+					</thead>
+					<tfoot>
+						<tr>
+							<th>ID</th>
+							<th>Nomb. y Ap.</th>
+							<th>Fecha nac.</th>
+							<th>Doc.</th>
+							<th>Cuil</th>
+							<th>Sexo</th>
+							<th>Municipio</th>
+							<th>Provincia</th>
+							<th>Sector</th>
+							<th>Local</th>
+							<th>Acciones</th>
+						</tr>
+					</tfoot>
+				</table>
 				
 			<hr></hr>
 			<br></br>
-			
+			<br></br>
+
 				<strong>reuna/api2/dameIntervencion?id=</strong>
 				<input type="text" id="busquedaIntervencion" placeholder="Doc/Apell/Nomb."/>
 				<button class="btn btn-success" id="botonBusquedaIntervencion">Buscar intervención</button>
 			
 			<hr></hr>
 			<br></br>
+
+				<h4><strong>Resultados - <span style="color:darkgreen">Abrir la consola con F12 para ver Todos los resultados del JSON</span></strong></h4>
+				<table id="tablaReunaIntervencion" class="display">
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>Id Legajo</th>
+							<th>Fecha</th>
+							<th>Sector</th>
+							<th>Local</th>
+							<th>Derivado Por</th>
+							<th>Motivo</th>
+							<th>Nombre Estado</th>
+							<th>Detalle</th>
+							<th>Observaciones</th>
+							<th>Acciones</th>
+						</tr>
+					</thead>
+					<tfoot>
+						<tr>
+							<th>Id</th>
+							<th>Id Legajo</th>
+							<th>Fecha</th>
+							<th>Sector</th>
+							<th>Local</th>
+							<th>Derivado Por</th>
+							<th>Motivo</th>
+							<th>Nombre Estado</th>
+							<th>Detalle</th>
+							<th>Observaciones</th>
+							<th>Acciones</th>
+						</tr>
+					</tfoot>
+				</table>
+				
+			<hr></hr>
 			<br></br>
 			<br></br>
+				
 		</div>
 	</div>
 </body>

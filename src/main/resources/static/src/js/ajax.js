@@ -136,7 +136,41 @@ $(document).ready(function() {
 
 /* Calls a Reuna */
 $(document).ready(function() {
+	/* Inicializo la variable de reusultados */
+	var data;
+	/* Inicializo la tabla de Reuna */
+	var tabla= 	$('#tablaReuna').DataTable( {
+		"data": data,
+		"columns": [
+            { "data" : "Legajo" },
+			{ "data" : "Nombre" },
+			{ "data" : "Fecha_Nac"},
+			{ 
+				"data" : "Doc_Tiene",
+				"defaultContent": ""
+			},
+			{
+				"data" : "Documento",
+				"defaultContent": ""
+			},
+			{ "data" : "Cuil" },
+			{ "data" : "Sexo" },
+			{ "data" : "Nacionalidad" },
+			{ "data" : "Municipio" },
+			{ "data" : "Provincia" },
+			{ "data" : "Direccion" },
+			{ "data" : "Telefono" },
+			{ "data" : "Zonal" },
+			{ "data" : "Local" },
+			
+			{
+			      "data": null,
+			      "defaultContent": "<img  alt='Asociar con Reuna' src='../src/img/edit-icon.png'/>"
+		}]
+} );
+	
 	$("#botonBusquedaReuna1").click(function(){
+		tabla.clear().draw();
 		var buscar = document.getElementById("busquedaReuna1").value;
 		$.ajax({
 	    	type : "GET",
@@ -150,170 +184,133 @@ $(document).ready(function() {
 	        	"Access-Control-Allow-Headers":"Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With"
 	        },
 		}).done(function(data) {
-				console.log(JSON.stringify(data, null, 2));
+			console.log(JSON.stringify(data, null, 2));
+			for (var i = 0; i < data.length; i++) {
+				tabla.row.add(data[i]).draw(false);
+			}
 		}).fail(function(error) {
 			$.alert({
 				type: 'red',
 				title: 'Error',
-				content: "<html><body><div>"+ error.responseJSON.message +"</div></body></html>",
+				content: "No encontrado",
 				columnClass: 'small/s'
 			});
-			/* Quitar en producción */
-			console.log('Error:', error);
 		});	
 	});	
 });
 
-/* Backup de funciones individuales,que llaman a endpoints, hay que volver a agregar los tags html si se llegan a usar */
-//function buscarIndividual(){
-//	$(document).ready(function() {
-//		var id = document.getElementById("idBuscarIndividual").value;
-//		
-//		$.ajax({
-//	    	type : "GET",
-//	        url: "api/jovenes/simple/"+ id,
-//	        headers: {
-//	        	"token":
-//	   			"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJVc3VhcmlvIjoiYXhlbCIsIk5vbWJyZSI6IkF4ZWwiLCJBcGVsbGlkbyI6IkJlcmxvdCIsIkVtYWlsIjoiYmVybG90ODNAeWFob28uY29tLmFyIiwiUm9sIjoiUk9MX0ZVTkNJT05BUklPIiwiU2VjdG9yIjoiTEEgUExBVEEifQ.XaWl34KzNxYkJO5PeMBhA-zv5P3a4yA2FDvYyfweSO7enbOR_J8gm16tn3wW_RJLrddRitmfn-ECW0riEd3EpA"
-//	        },
-//		}).done(function(data) {	
-//			console.log(JSON.stringify(data, null, 2));
-//			var jsonData = [
-//			   data
-//			];
-//				$('#buscarIndividualTabla').DataTable( {
-//					"data": jsonData,
-//			        "columns": [
-//				            { "data" : "apellidoYNombre" },
-//							{ "data" : "nombres" },
-//							{ "data" : "tieneDocumento" },
-//							{ "data" : "tipoDeDocumento.nombre" },
-//							{ "data" : "tipoDeDocumento.nombreCorto" },
-//							{ "data" : "situacionDocumentacion" },
-//							{ "data" : "sexo" },
-//							{ "data" : "historicidad" },
-//							{
-//						      "data": null,
-//						      "defaultContent": "<img  alt='Asociar con Reuna' src='../src/img/edit-icon.png'/>"
-//							}
-//						]
-//				} );
-//		})
-//	} );
-//}
+/* Call a Reuna Legajo */
+$(document).ready(function() {
+	var data;
+	var tabla= 	$('#tablaReunaLegajo').DataTable( {
+		"data": data,
+		"columns": [
+            { "data" : "Id" },
+			{ "data" : "Nombre" },
+			{ "data" : "Fecha_nac"},
+			{
+				"data" : "Documento",
+				"defaultContent": ""
+			},
+			{ "data" : "Cuil" },
+			{ "data" : "Sexo" },
+			{ "data" : "Municipio" },
+			{ "data" : "Provincia" },
+			{ "data" : "Zonal" },
+			{ "data" : "Local" },
+			
+			{
+			      "data": null,
+			      "defaultContent": "<img  alt='Asociar con Reuna' src='../src/img/edit-icon.png'/>"
+		}]
+} );
+	
+		$("#botonBusquedaLegajo").click(function(){
+		tabla.clear().draw();
+		var buscar = document.getElementById("busquedaLegajo").value;
+		$.ajax({
+	    	type : "GET",
+	    	url: "http://163.10.35.7:8080/reuna/api2/dameLegajo?id="+ buscar,
+	        headers: {
+	        	"Content-Type": "application/json; charset=UTF-8",
+	        	"Access-Control-Allow-Origin": "*",
+	        	"token":"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJBZG1pbmluc3RyYWRvciIsIk5vbWJyZSI6Ik1hcmNlbG8iLCJBcGVsbGlkbyI6IlBlcmV5cmEiLCJFbWFpbCI6Im1hcmNlbG9Ac255YS5jb20uYXIiLCJSb2wiOiJBZG1pbmluc3RyYWRvciIsIlNlY3RvciI6IlNOWUEgTGEgUGxhdGEifQ.UdvtF3a-lFlDghso8EK4e3bCVY5t5YdzsxhbbjCqGGteqbaKSwnvNJAoKWF1E9sRCWJWNi3o1-Z6X9ujdj4uPg",
+	        	"Access-Control-Allow-Methods": "GET, POST, PUT, DELETE",
+	        	"Access-Control-Max-Age":" 3600",
+	        	"Access-Control-Allow-Headers":"Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With"
+	        },
+		}).done(function(data) {
+			console.log(JSON.stringify(data, null, 2));
+			for (var i = 0; i < data.length; i++) {
+				tabla.row.add(data[i]).draw(false);
+			}
+		}).fail(function(error) {
+			$.alert({
+				type: 'red',
+				title: 'Error',
+				content: "No encontrado",
+				columnClass: 'small/s'
+			});
+		});	
+	});
 
-//function busquedaMixta1(){
-//	
-//	
-//		var busquedaMixta1Div = document.getElementById("busquedaMixta1Div");
-//		var buscar = document.getElementById("busquedaMixta1").value;
-//		$.ajax({
-//	    	type : "GET",
-//	    	url: "api/jovenes/simple/busqueda1?buscar="	+ buscar,
-//	        headers: {
-//	        	"token":
-//	   			"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJVc3VhcmlvIjoiYXhlbCIsIk5vbWJyZSI6IkF4ZWwiLCJBcGVsbGlkbyI6IkJlcmxvdCIsIkVtYWlsIjoiYmVybG90ODNAeWFob28uY29tLmFyIiwiUm9sIjoiUk9MX0ZVTkNJT05BUklPIiwiU2VjdG9yIjoiTEEgUExBVEEifQ.XaWl34KzNxYkJO5PeMBhA-zv5P3a4yA2FDvYyfweSO7enbOR_J8gm16tn3wW_RJLrddRitmfn-ECW0riEd3EpA"
-//	        },
-//		}).done(function(data) {	
-//			console.log(JSON.stringify(data, null, 2));
-//				$('#busquedaMixta1Tabla').DataTable( {
-//					"data": data,
-//					"columns": [
-//			            { "data" : "apellidoYNombre" },
-//						{ "data" : "nombres" },
-//						{ "data" : "tieneDocumento" },
-//						{ "data" : "tipoDeDocumento.nombre" },
-//						{ "data" : "tipoDeDocumento.nombreCorto" },
-//						{ "data" : "situacionDocumentacion" },
-//						{ "data" : "sexo" },
-//						{ "data" : "historicidad" },
-//						{
-//						      "data": null,
-//						      "defaultContent": "<img  alt='Asociar con Reuna' src='../src/img/edit-icon.png'/>",
-//						    }]
-//				} );
-//		})
-//}
-
-/* Busqueda mixta1 */
-//function busquedaMixta1() {
-//	var busquedaMixta1Div = document
-//			.getElementById("busquedaMixta1Div");
-//	busquedaMixta1Div.innerHTML = "";
-//	var buscar = document.getElementById("busquedaMixta1").value;
-//	$
-//			.ajax({
-//				type : "GET",
-//				beforeSend : function(request) {
-//					request
-//							.setRequestHeader(
-//									"token",
-//									"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJVc3VhcmlvIjoiYXhlbCIsIk5vbWJyZSI6IkF4ZWwiLCJBcGVsbGlkbyI6IkJlcmxvdCIsIkVtYWlsIjoiYmVybG90ODNAeWFob28uY29tLmFyIiwiUm9sIjoiUk9MX0ZVTkNJT05BUklPIiwiU2VjdG9yIjoiTEEgUExBVEEifQ.XaWl34KzNxYkJO5PeMBhA-zv5P3a4yA2FDvYyfweSO7enbOR_J8gm16tn3wW_RJLrddRitmfn-ECW0riEd3EpA");
-//				},
-//				url : "api/jovenes/simple/busqueda1?buscar="	+ buscar,
-//				dataType : "json",
-//				processData : false,
-//				success : function(data) {
-//					busquedaMixta1Div.innerHTML = JSON.stringify(data, null, 2);
-//				}
-//			});
-//}
-
-/* Busqueda mixta2 */
-//function busquedaMixta2() {
-//	var busquedaMixta2Div = document.getElementById("busquedaMixta2Div");
-//	busquedaMixta2Div.innerHTML = "";
-//	var documento = document.getElementById("paramDocumento").value;
-//	var nombre = document.getElementById("paramNombre").value;
-//	var apellido = document.getElementById("paramApellido").value;
-//	$
-//			.ajax({
-//				type : "GET",
-//				beforeSend : function(request) {
-//					request
-//							.setRequestHeader(
-//									"token",
-//									"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJVc3VhcmlvIjoiYXhlbCIsIk5vbWJyZSI6IkF4ZWwiLCJBcGVsbGlkbyI6IkJlcmxvdCIsIkVtYWlsIjoiYmVybG90ODNAeWFob28uY29tLmFyIiwiUm9sIjoiUk9MX0ZVTkNJT05BUklPIiwiU2VjdG9yIjoiTEEgUExBVEEifQ.XaWl34KzNxYkJO5PeMBhA-zv5P3a4yA2FDvYyfweSO7enbOR_J8gm16tn3wW_RJLrddRitmfn-ECW0riEd3EpA");
-//				},
-//				url : "api/jovenes/simple/busqueda2?numeroDocumento=" + documento + "&apellidos="+ apellido + "&nombres=" + nombre,
-//				dataType : "json",
-//				processData : false,
-//				success : function(data) {
-//					alert(data);
-//					
-//					$("#busquedaMixta2Div").append(
-//							JSON.stringify(data, null, 2));
-//				}
-//			});
-//}
+});
 
 
+/* Call a Reuna Intervenciones */
+$(document).ready(function() {
+	var data;
+	var tabla= 	$('#tablaReunaIntervencion').DataTable( {
+		"data": data,
+		"columns": [
+            { "data" : "Id" },
+			{ "data" : "Id_Legajo" },
+			{ "data" : "Fecha"},
+			{ "data" : "Zonal" },
+			{ "data" : "Local" },
+			{
+				"data" : "Derivado_Por",
+				"defaultContent": ""
+			},
+			{ "data" : "Motivo" },
+			{ "data" : "Nombre_Estado" },
+			{ "data" : "Detalle_Intervencion" },
+			{ "data" : "Observaciones" },
+			
+			{
+			      "data": null,
+			      "defaultContent": "<img  alt='Asociar con Reuna' src='../src/img/edit-icon.png'/>"
+		}]
+} );
+	
+		$("#botonBusquedaIntervencion").click(function(){
+		tabla.clear().draw();
+		var buscar = document.getElementById("busquedaIntervencion").value;
+		$.ajax({
+	    	type : "GET",
+	    	url: "http://163.10.35.7:8080/reuna/api2/dameIntervencion?id="+ buscar,
+	        headers: {
+	        	"Content-Type": "application/json; charset=UTF-8",
+	        	"Access-Control-Allow-Origin": "*",
+	        	"token":"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJBZG1pbmluc3RyYWRvciIsIk5vbWJyZSI6Ik1hcmNlbG8iLCJBcGVsbGlkbyI6IlBlcmV5cmEiLCJFbWFpbCI6Im1hcmNlbG9Ac255YS5jb20uYXIiLCJSb2wiOiJBZG1pbmluc3RyYWRvciIsIlNlY3RvciI6IlNOWUEgTGEgUGxhdGEifQ.UdvtF3a-lFlDghso8EK4e3bCVY5t5YdzsxhbbjCqGGteqbaKSwnvNJAoKWF1E9sRCWJWNi3o1-Z6X9ujdj4uPg",
+	        	"Access-Control-Allow-Methods": "GET, POST, PUT, DELETE",
+	        	"Access-Control-Max-Age":" 3600",
+	        	"Access-Control-Allow-Headers":"Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With"
+	        },
+		}).done(function(data) {
+			console.log(JSON.stringify(data, null, 2));
+			for (var i = 0; i < data.length; i++) {
+				tabla.row.add(data[i]).draw(false);
+			}
+		}).fail(function(error) {
+			$.alert({
+				type: 'red',
+				title: 'Error',
+				content: "No encontrado",
+				columnClass: 'small/s'
+			});
+		});	
+	});
 
-//$(document).ready(function() {
-//	var objeto = {};
-//	var result = [];
-//	objeto.data = result;
-//	var id = document.getElementById("idBuscarIndividual").value;
-//	
-//	$.ajax({
-//    	type : "GET",
-//        url: "api/TipoBeneficio/1",
-//        headers: {
-//        	"token":
-//   			"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJVc3VhcmlvIjoiYXhlbCIsIk5vbWJyZSI6IkF4ZWwiLCJBcGVsbGlkbyI6IkJlcmxvdCIsIkVtYWlsIjoiYmVybG90ODNAeWFob28uY29tLmFyIiwiUm9sIjoiUk9MX0ZVTkNJT05BUklPIiwiU2VjdG9yIjoiTEEgUExBVEEifQ.XaWl34KzNxYkJO5PeMBhA-zv5P3a4yA2FDvYyfweSO7enbOR_J8gm16tn3wW_RJLrddRitmfn-ECW0riEd3EpA"
-//        },
-//	}).done(function(data) {	
-//		var jsonData = [
-//		   data
-//		];
-//			$('#buscarIndividualTabla').DataTable( {
-//				"data": jsonData,
-//		        "columns": [
-//		            { "data" : "id" },
-//					{ "data" : "nombre" },
-//					{ "data" : "nombreCompleto" },
-//					{ "data" : "porDefecto" },
-//		        ]
-//			} );
-//	})
-//} );
+});
+

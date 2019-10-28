@@ -8,6 +8,8 @@ import javax.persistence.NamedStoredProcedureQueries;
 import javax.persistence.NamedStoredProcedureQuery;
 import javax.persistence.StoredProcedureParameter;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import snya.reina.modelo.joven.Joven;
 
 import javax.persistence.ParameterMode;
