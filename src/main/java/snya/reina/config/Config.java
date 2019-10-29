@@ -6,16 +6,15 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.client.ClientHttpRequestInterceptor;
+import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 import snya.archivoscliente.ArchivoCliente;
 import snya.notificacionescliente.NotificacionCliente;
 import snya.reina.rest.seguridad.DatosUsuarioInterceptor;
 
+@Component
 @Configuration
 public class Config{
-	
-	@Autowired
-	ApplicationContext applicationContext;
 	
 	@Bean
 	public ArchivoCliente archivoCliente() {
@@ -35,6 +34,5 @@ public class Config{
         restTemplate.setInterceptors(interceptors);
         return restTemplate;
     }
-
 
 }
